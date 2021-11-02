@@ -31,7 +31,7 @@ Post.init(
     description: {
       type: DataTypes.STRING,
     },
-    hype: {
+    hype_count: {
       type: DataTypes.FLOAT,
       allowNull: false,
     },

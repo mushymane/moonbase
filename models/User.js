@@ -39,8 +39,8 @@ User.init(
         len: [1],
       },
     },
-    hypecount: {
-      type: DataTypes.INTEGER,
+    hype_count: {
+      type: DataTypes.FLOAT,
       allowNull: false,
       default: 0,
     },

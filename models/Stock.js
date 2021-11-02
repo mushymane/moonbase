@@ -2,7 +2,16 @@ const { Model, DataTypes } = require("sequelize");
 const bcrypt = require("bcrypt");
 const sequelize = require("../config/connection");
 
-class Stock extends Model {}
+class Stock extends Model {
+  /**
+   *
+   * @param {Double} change
+   * @returns boolean if the stock is bullish or not
+   */
+  isBullish(change) {
+    return change > 0;
+  }
+}
 
 Stock.init(
   {

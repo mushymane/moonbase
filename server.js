@@ -19,7 +19,7 @@ const sess = {
     cookie: {},
     resave: false,
     saveUnitialized: true,
-    store: new SequelizeStore({db: sequelize})
+    store: new SequelizeStore({ db: sequelize })
 }
 
 app.use(session(sess));

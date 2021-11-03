@@ -18,15 +18,15 @@ Post.init(
     },
     price: {
       type: DataTypes.DECIMAL,
-      allowNull: false,
+      //allowNull: false,
     },
     change: {
       type: DataTypes.DECIMAL,
-      allowNull: false,
+      //allowNull: false,
     },
     percent_change: {
       type: DataTypes.DECIMAL,
-      allowNull: false,
+      //allowNull: false,
     },
     description: {
       type: DataTypes.STRING,

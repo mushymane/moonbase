@@ -1,0 +1,12 @@
+[
+    {
+        "ticker": "AAPL",
+        "name": "Apple Inc",
+        "price": 151.49,
+        "change": 1.47,
+        "percent_change": 0.98,
+        "open": 150.39,
+        "high": 151.97,
+        "low": 149.82
+    }
+]

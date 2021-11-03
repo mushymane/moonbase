@@ -41,8 +41,11 @@ router.get("/:id", async (req, res) => {
         .status(404)
         .json({ message: "no comment found with this comment id" });
       return;
+    } 
+    } catch (err) {
+        res.status(500).json(err);
     }
-
+});
 
 router.post('/:id/comment', withAuth, async (req, res) => {
     try {

@@ -1,37 +1,44 @@
 const cheerio = require('cheerio');
 const axios = require("axios");
-
+const quotePrice = require('./axios-quote');
 const yahooTrendingUrl = "https://finance.yahoo.com/trending-tickers/";
 
 async function loadTrending() {
-    var trendingTinkerArray = [];
-    var trendingNameArray = [];
-
+    var trendingStock = [];
     const response = await axios.get(yahooTrendingUrl)
-
     const $ = cheerio.load(response.data);
     $('a[data-test=quoteLink]').each((i, element) => {
-        // console.log(i+1);
-        // console.log(element);
-        trendingTinkerArray.push(element.children[0].data)
-        trendingNameArray.push(element.attribs.title)
-    });
-    console.log(trendingTinkerArray);
-    console.log(trendingNameArray);
-
-    var trendingStock = [];
-    for (var i = 0; i < trendingTinkerArray.length; i++) {
         trendingStock.push({
-            ticker: trendingTinkerArray[i],
-            name: trendingNameArray[i],
-            price: 1.11,
-            change: 1.22,
-            percent_change: 1.33,
-            open: 1.55,
-            high: 1.66,
-            low: 1.44
+            ticker: element.children[0].data,
+            name: element.attribs.title,
+            price: 0,
+            change: 0,
+            percent_change: 0,
+            open: 0,
+            high: 0,
+            low: 0
         });
-    }
-    console.log(trendingStock);
+    });
+    return trendingStock;
 }
-loadTrending();
+
+async function quoteTrending() {
+    var trendingStock = await loadTrending();
+    for (var i = 0; i < trendingStock.length; i++) {
+        let quoteForI = await quotePrice(trendingStock[i].ticker);
+        trendingStock[i].price = quoteForI.c,
+            trendingStock[i].change = quoteForI.d,
+            trendingStock[i].percent_change = quoteForI.dp,
+            trendingStock[i].open = quoteForI.o,
+            trendingStock[i].high = quoteForI.h,
+            trendingStock[i].low = quoteForI.l
+    }
+    return trendingStock;
+}
+
+async function createTrending() {
+    var trendingWithPrice = await quoteTrending();
+    console.log(trendingWithPrice);
+}
+
+module.exports = createTrending;

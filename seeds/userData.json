@@ -1,5 +1,26 @@
 [
     {
-        
+      "username": "bballer13",
+      "email": "bballer13@gmail.com",
+      "password": "password",
+      "hype_count": 10
+    },
+    {
+      "username": "shallowclam15",
+      "email": "yellowballoon7@yahoo.com",
+      "password": "testpw",
+      "hype_count": 100
+    },
+    {
+      "username": "premiumespressomachine",
+      "email": "princessgeorge@hotmail.com",
+      "password": "12345",
+      "hype_count": 0
+    },
+    {
+      "username": "sailingsamuel",
+      "email": "imnotsamuel@gmail.com",
+      "password": "2580" 
     }
-]
+    
+  ]

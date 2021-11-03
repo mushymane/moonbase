@@ -138,4 +138,33 @@ router.delete('/:id', withAuth, async (req, res) => {
     }
 })
 
+router.get('/:id/comment', async (req, res) => {
+    try {
+        const commentData = await Comment.findAll(
+            { include: [{ model: Post }, { model: User }] },
+            { where: { post_id: req.params.id } }
+        );
+        res.status(200).json(commentData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
+
+router.get('/:id/comment/:cid', async (req, res) => {
+    try {
+        const commentData = await Comment.findByPk(req.params.cid, {
+            include: [{ model: User }]
+        })
+
+        if (!commentData) {
+            res.status(404).json({ message: 'no comment found with this comment id' })
+            return;
+        }
+
+        res.status(200).json(commentData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
+
 module.exports = router;

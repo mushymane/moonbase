@@ -1,23 +1,14 @@
 const axios = require("axios");
-const apiParams = require("./finnhub-params");
-const apiKey = apiParams.apiKey;
-const baseUrl = apiParams.baseUrl;
-const symbolURL = `${baseUrl}stock/symbol`;
+require('dotenv').config();
+const baseUrl = 'https://finnhub.io/api/v1/';
+const apiKey = `&token=${process.env.API_KEY}`;
 
+var userSearchTest = "apple";
 
-async function getAllNyse() {
-    let mic = "NYSE"
-    const completeSymbolQuery = `${symbolURL}?exchange=US&?mic=${mic}&?currency=USD${apiKey}`;
-    const response = await axios.get(completeSymbolQuery)
+async function stockSearch() {
+    console.log("You will want the stock ticker that does NOT have a '.XX' at the end.");
+    const completeSearchQuery = `${baseUrl}search?q=${userSearchTest}${apiKey}`;
+    const response = await axios.get(completeSearchQuery)
     console.log(response);
 }
-getAllNyse();
-
-
-async function getAllNxas() {
-    let mic = "NXAS"
-    const completeSymbolQuery = `${symbolURL}?exchange=US&?mic=${mic}&?currency=USD${apiKey}`;
-    const response = await axios.get(completeSymbolQuery)
-    console.log(response);
-}
-getAllNxas();
+stockSearch();

@@ -1,23 +1,13 @@
 const axios = require("axios");
-const apiParams = require("./finnhub-params");
-const apiKey = apiParams.apiKey;
-const baseUrl = apiParams.baseUrl;
-const symbolURL = `${baseUrl}stock/symbol`;
+require('dotenv').config();
+const baseUrl = 'https://finnhub.io/api/v1/';
+const apiKey = `&token=${process.env.API_KEY}`;
 
+var userQuoteTest = "AAPL";
 
-async function getAllNyse() {
-    let mic = "NYSE"
-    const completeSymbolQuery = `${symbolURL}?exchange=US&?mic=${mic}&?currency=USD${apiKey}`;
-    const response = await axios.get(completeSymbolQuery)
+async function stockQuote() {
+    const completeQuoteQuery = `${baseUrl}quote?symbol=${userQuoteTest}${apiKey}`;
+    const response = await axios.get(completeQuoteQuery)
     console.log(response);
 }
-getAllNyse();
-
-
-async function getAllNxas() {
-    let mic = "NXAS"
-    const completeSymbolQuery = `${symbolURL}?exchange=US&?mic=${mic}&?currency=USD${apiKey}`;
-    const response = await axios.get(completeSymbolQuery)
-    console.log(response);
-}
-getAllNxas();
+stockQuote();

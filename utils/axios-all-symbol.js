@@ -10,7 +10,6 @@ async function getAllXnys() {
     const response = await axios.get(completeSymbolQuery)
     console.log(response.data);
 }
-getAllXnys();
 
 
 async function getAllXnas() {
@@ -19,7 +18,6 @@ async function getAllXnas() {
     const response = await axios.get(completeSymbolQuery)
     console.log(response.data);
 }
-getAllXnas();
 
 
 // Response example

@@ -3,17 +3,17 @@ require('dotenv').config();
 const baseUrl = 'https://finnhub.io/api/v1/';
 const apiKey = `&token=${process.env.API_KEY}`;
 
-var userMetricTest = "AAPL"; // This is a hard-coded test variable
 
-async function stockMetric() {
-    const completeMetricQuery = `${baseUrl}stock/metric?symbol=${userMetricTest}&metric=all${apiKey}`;
+async function stockMetric(ticker) {
+    let userMetric= ticker
+    const completeMetricQuery = `${baseUrl}stock/metric?symbol=${userMetric}&metric=all${apiKey}`;
     const response = await axios.get(completeMetricQuery)
-    console.log(response.data.metric); // Probably don't need all of these
+    // console.log(response.data.metric); // Probably don't need all of these
 
+    return response.data.metric;
 }
-stockMetric();
 
-
+module.exports = stockMetric;
 
 
 // {

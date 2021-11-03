@@ -4,20 +4,14 @@ const baseUrl = 'https://finnhub.io/api/v1/';
 const apiKey = `&token=${process.env.API_KEY}`;
 
 
-// var quoteBtn = document.getElementById('#quote')
-
-var userQuoteTest = "AAPL";  // This is a hard-coded test variable
-
-async function stockQuote() {
-    const completeQuoteQuery = `${baseUrl}quote?symbol=${userQuoteTest}${apiKey}`;
+async function stockQuote(ticker) {
+    let userQuote = ticker
+    const completeQuoteQuery = `${baseUrl}quote?symbol=${userQuote}${apiKey}`;
     const response = await axios.get(completeQuoteQuery)
-    console.log(response.data); // response explained below
-
-    
+    return response.data; // response explained below
 }
-stockQuote();
 
-// quoteBtn.addEventListener("click", stockQuote); 
+module.exports = stockQuote;
 
 // what the results mean
 // c - Current price

@@ -77,7 +77,7 @@ router.get("/stock/:id", async (req, res) => {
 });
 
 // adds new post /api/posts
-router.post("/", async (req, res) => {
+router.post("/", withAuth, async (req, res) => {
   try {
     const postData = await User.create({
       ...req.body,
@@ -91,7 +91,7 @@ router.post("/", async (req, res) => {
 });
 
 //updates post based on post id /api/posts/:id
-router.put("/:id", async (req, res) => {
+router.put("/:id", withAuth, async (req, res) => {
   try {
     const postData = await Post.update(
       {
@@ -116,7 +116,7 @@ router.put("/:id", async (req, res) => {
 });
 
 //deletes post based on post id /api/posts/:id
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", withAuth, async (req, res) => {
   try {
     const postData = Post.destroy({
       where: {

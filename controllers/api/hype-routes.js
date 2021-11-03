@@ -3,6 +3,7 @@ const { User, Post, Comment, Hype } = require('../../models');
 const withAuth = require('../../utils/auth');
 const router = require('./user-routes');
 
+
 // Get a post's hypes
 router.get('/posts/:id', withAuth, async (req, res) => {
     try {
@@ -54,16 +55,21 @@ router.put('/posts/:id', withAuth, async (req, res) => {
     }
 })
 
+
+// adds another hype element, not sure if this works we can check
+// api/hype/
 router.post('/', withAuth, async (req, res) => {
     try {
-        const hypeData = await Hype.create(req.body);
+        const hypeData = await Hype.create(...req.body);
         res.status(200).json(hypeData);
     } catch (err) {
         res.status(400).json(err);
     }
 });
 
+
 router.delete('/:id', withAuth, async (req, res) => {
+// deletes hype based on hype id api/hype/:id
     try {
         const hypeData = await Hype.destroy({
             where: { id: req.params.id }

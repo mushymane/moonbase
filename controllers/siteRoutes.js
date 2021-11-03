@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Post, Comment, Hype } = require('../models');
+const { User, Post, Comment, Hype, Stock } = require('../models');
 
 const withAuth = require('../utils/auth');
 
@@ -103,6 +103,7 @@ router.get('/dashboard/edit/:id', withAuth, async (req,res) => {
     }
 })
 
+// TODO
 router.get('/trending', async (req, res) => {
     try {
         // grab trending stocks
@@ -115,6 +116,9 @@ router.get('/trending', async (req, res) => {
         res.status(500).json(err);
     }
 })
+
+//TODO get individual stock url to view comments as well path: /trending/:tickerid, much like single-post on the techblog
+
 
 router.get('/login', (req, res) => {
     if (req.session.logged_in) {

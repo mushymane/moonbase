@@ -1,12 +1,17 @@
 const router = require('express').Router();
-const userRoutes = require('./user-routes'); // user comment routes will go here
-const postRoutes = require('./post-routes'); // post comment routes will go here
+
+const userRoutes = require('./user-routes');
+const postRoutes = require('./post-routes');
+const commentRoutes = require('./comment-routes');
 const hypeRoutes = require('./hype-routes');
-// include routes and stocks later
+const stockRoutes = require('./stock-routes');
+
 
 router.use('/users', userRoutes);
 router.use('/posts', postRoutes);
+router.use('/comments', commentRoutes);
 router.use('/hype', hypeRoutes);
-// router.use comments, hypes, stocks
+router.use('/stocks', stockRoutes);
+
 
 module.exports = router;

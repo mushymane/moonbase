@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { User, Post, Comment, Hype } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+// get all users /api/users/
 router.get('/', async (req, res) => {
     try {
         const userData = await User.findAll({
@@ -18,6 +19,7 @@ router.get('/', async (req, res) => {
     }
 })
 
+// get user based on user id /api/users/:id
 router.get('/:id', async (req, res) => {
     try {
         const userData = await User.findByPk(req.params.id, {
@@ -39,10 +41,12 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+// create a new user /api/users
 router.post('/', async (req, res) => {
     try {
         const userData = await User.create(req.body);
 
+        // below is probably not needed, because we alr have the login
         // req.session.save(() => {
         //     req.session.user_id = userData.id;
         //     req.session.logged_in = true;
@@ -54,6 +58,7 @@ router.post('/', async (req, res) => {
     }
 })
 
+// logins in user api/users/login
 router.post('/login', async (req, res) => {
     try {
         const userData = await User.findOne({
@@ -72,18 +77,18 @@ router.post('/login', async (req, res) => {
             res.status(400).json({ message: 'incorrect password' })
         }
 
-        // req.session.save(() => {
-        //     req.session.user_id = userData.id;
-        //     req.session.logged_in = true;
-        //     res.status(200).json({ user: userData, message: 'user is now logged in' })
-        // })
+        req.session.save(() => {
+            req.session.user_id = userData.id;
+            req.session.logged_in = true;
+            res.status(200).json({ user: userData, message: 'user is now logged in' })
+        })
 
-        res.status(200).json(userData); //need to replace this with above when ready for FE
     } catch (err) {
         res.status(400).json(err);
     }
 })
 
+//logs out user with api/users/logout
 router.post('/logout', (req, res) => {
     if (req.session.logged_in) {
         req.session.destroy(() => {
@@ -94,6 +99,7 @@ router.post('/logout', (req, res) => {
     }
 })
 
+// updates user info with /api/users/:id, may not be necessary
 router.put('/:id', withAuth, async (req, res) => {
     try {
         console.log(req.body)
@@ -119,6 +125,7 @@ router.put('/:id', withAuth, async (req, res) => {
     }
 })
 
+// delete user based on user id /api/users/:id
 router.delete('/:id', withAuth, async (req, res) => {
     try {
         const userData = await User.destroy({
@@ -138,7 +145,8 @@ router.delete('/:id', withAuth, async (req, res) => {
     }
 })
 
-router.get('/:id/comment', async (req, res) => {
+// gets comments based on user id /api/users/id:/comments
+router.get('/:id/comments', async (req, res) => {
     try {
         const commentData = await Comment.findAll(
             { include: [{ model: Post }, { model: User }] },
@@ -150,7 +158,8 @@ router.get('/:id/comment', async (req, res) => {
     }
 })
 
-router.get('/:id/comment/:cid', async (req, res) => {
+// probably not necessary imo
+router.get('/:id/comments/:cid', async (req, res) => {
     try {
         const commentData = await Comment.findByPk(req.params.cid, {
             include: [{ model: User }]

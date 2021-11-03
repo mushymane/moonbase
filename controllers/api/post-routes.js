@@ -134,6 +134,17 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-//TODO also get comments under each post
+//get all comments based on post id
+router.get("/api/posts/:id/comments", async (req, res) => {
+  try {
+    const commentData = await Comment.findAll(
+      { include: [{ model: Post }, { model: User }] },
+      { where: { post_id: req.params.id } }
+    );
+    res.status(200).json(commentData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;

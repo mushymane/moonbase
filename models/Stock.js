@@ -16,37 +16,37 @@ class Stock extends Model {
 Stock.init(
   {
     ticker: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING, // From axios-search or axios-all-symbol. 'displaySymbol' on both
       unique: true,
       allowNull: false,
       primaryKey: true,
     },
     name: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING,  // From axios-search or axios-all-symbol. 'description' on both
       allowNull: false,
     },
     price: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL, // From axios-quote 'c'
       allowNull: false,
     },
     change: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL, // From axios-quote 'p'
       allowNull: false,
     },
     percent_change: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL, // From axios-quote 'dp'
       allowNull: false,
     },
     open: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL, // From axios-quote 'o'
       allowNull: false,
     },
     high: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL, // From axios-quote  'h'
       allowNull: false,
     },
     low: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL, // From axios-quote  'l'
       allowNull: false,
     },
   },

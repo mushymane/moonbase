@@ -12,6 +12,8 @@ async function stockQuote() {
     const completeQuoteQuery = `${baseUrl}quote?symbol=${userQuoteTest}${apiKey}`;
     const response = await axios.get(completeQuoteQuery)
     console.log(response.data); // response explained below
+
+    
 }
 stockQuote();
 

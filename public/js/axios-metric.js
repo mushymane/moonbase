@@ -9,6 +9,7 @@ async function stockMetric() {
     const completeMetricQuery = `${baseUrl}stock/metric?symbol=${userMetricTest}&metric=all${apiKey}`;
     const response = await axios.get(completeMetricQuery)
     console.log(response.data.metric); // Probably don't need all of these
+
 }
 stockMetric();
 

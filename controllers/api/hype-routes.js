@@ -3,6 +3,7 @@ const { User, Post, Comment, Hype } = require('../../models');
 const withAuth = require('../../utils/auth');
 const router = require('./user-routes');
 
+// adds another hype element, 
 router.post('/', withAuth, async (req, res) => {
     try {
         const hypeData = await Hype.create(req.body);

@@ -16,17 +16,17 @@ class Stock extends Model {
 Stock.init(
   {
     ticker: {
-      type: DataTypes.STRING, // From axios-search or axios-all-symbol. 'displaySymbol' on both
+      type: DataTypes.STRING, // From axios-search or axios-all-symbol. 'displaySymbol' on both. Could be easily seeded. Might be the best way. Instead on having to [ Run axios-search {slooow 1-5 sec} > run axios-quote {near-instant} > POST ], [ run axios-quote {near-instant} > PUT ]. Would allow for easier search validation. 
       unique: true,
       allowNull: false,
       primaryKey: true,
     },
     name: {
-      type: DataTypes.STRING,  // From axios-search or axios-all-symbol. 'description' on both
+      type: DataTypes.STRING,  // From axios-search or axios-all-symbol. 'description' on both. Could be easily seeded.
       allowNull: false,
     },
     price: {
-      type: DataTypes.DECIMAL, // From axios-quote 'c'
+      type: DataTypes.DECIMAL, // From axios-quote 'c'. QUESTION: When do we get this info? When the stock in mentioned in a post?
       allowNull: false,
     },
     change: {
@@ -49,7 +49,7 @@ Stock.init(
       type: DataTypes.DECIMAL, // From axios-quote  'l'
       allowNull: false,
     },
-  },
+  },   /// Add more meta data from axios-metric. Display on the Trending ticker feed. Not on post?
   {
     sequelize,
     timestamps: false,

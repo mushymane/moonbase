@@ -16,31 +16,31 @@ class User extends Model {
 User.init(
   {
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.INTEGER, // auto-inc
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
     username: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING, // user entered
       allowNull: false,
     },
     email: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING, // user entered
       allowNull: false,
       validate: {
         isEmail: true,
       },
     },
     password: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING, // user entered
       allowNull: false,
       validate: {
         len: [1],
       },
     },
     hype_count: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.FLOAT, // Determined behind the scenes
       allowNull: false,
       default: 0,
     },

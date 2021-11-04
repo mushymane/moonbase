@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
 });
 
 // /api/comments/posts/:id, same as /api/posts/:id/comments
-//get all comments based on post id NOTE this is already in post-routes.js 
+//get all comments based on post id NOTE this is already in post-routes.js
 router.get("/posts/:id", async (req, res) => {
   try {
     const commentData = await Comment.findAll(
@@ -42,10 +42,31 @@ router.get("/:id", async (req, res) => {
         .json({ message: "no comment found with this comment id" });
       return;
     }
-    res.status(200).json(commentData)
-    } catch (err) {
-        res.status(500).json(err);
+    res.status(200).json(commentData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// delete just for testing purposes
+router.delete("/:id", async (req, res) => {
+  try {
+    const commentData = await Comment.destroy({
+      where: {
+        id: req.params.id,
+        //post_id: req.params.id,
+        //user_id: req.session.user_id,
+      },
+    });
+    if (!commentData) {
+      res.status(404).json({ message: "no comment found with that id" });
+      return;
     }
+
+    res.status(200).json(commentData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 module.exports = router;

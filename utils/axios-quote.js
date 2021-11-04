@@ -5,10 +5,14 @@ const apiKey = `&token=${process.env.API_KEY}`;
 
 
 async function stockQuote(ticker) {
-    let userQuote = ticker
-    const completeQuoteQuery = `${baseUrl}quote?symbol=${userQuote}${apiKey}`;
-    const response = await axios.get(completeQuoteQuery)
-    return response.data; // response explained below
+    try {
+        let userQuote = ticker
+        const completeQuoteQuery = `${baseUrl}quote?symbol=${userQuote}${apiKey}`;
+        const response = await axios.get(completeQuoteQuery)
+        return response.data; // response explained below
+    } catch (err) {
+        console.error(err);
+    }
 }
 
 module.exports = stockQuote;

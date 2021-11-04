@@ -9,35 +9,37 @@ DETAILED VIEW OF A POST GOES HERE!
 * --}}
 
 
-{{!-- *
-*
-*
-*
-COMMENTS SECTION GOES HERE!
-*
-*
-*
-* --}}
+{{!--COMMENTS SECTION GOES HERE!--}}
+{{#each post.comment}}
+<div class="card row">
+    <p class="card-text">{{comment.text_body}}</p>
+    <div class="inline-block">
+        <label class="form-label" for="username">User: <span class="card-text"
+                id="username">{{comment.user_id}}</span></label>
+                {{!-- how to grab the username... --}}
+    </div>
+</div>
+{{/each}}
 
 
 {{!-- MAKE A COMMENT GOES HERE --}}
+{{#if loggedIn}}
 <div class="mb-3 w-75">
-    <h2 class="">Make a comment...</h2>
-    <form class="add-comment-form form-group">
+    <form class="add-comment-form form-group row">
         <label class="form-label" for="description">
-            Description:
+            Add a comment...
         </label>
         <br />
         <textarea id="description" class="form-control"
-            placeholder="Dump all my savings into gourd 🎃 futures, earned 5.5 mil, and you can too!"
-            aria-label="ticker" name="ticker" name="description" rows="5" cols="30">
-          {{description}}
-        </textarea>
-        <div>
+            placeholder="Bruh, who puts their life savings in ornamental gourd futures? What is wrong with you??????"
+            aria-label="ticker" name="ticker" name="description" rows="6" cols="30">
+              {{description}}
+            </textarea>
+        <div class="row">
             <input type="radio" class="btn-check" name="options-outlined" id="bear-btn" autocomplete="off">
-            <label class="btn btn-outline-danger custom-btn" for="bear">🐻 Bearish 📉</label>
+            <label class="btn btn-outline-danger custom-btn" for="bear-btn">🐻 Bearish 📉</label>
             <input type="radio" class="btn-check" name="options-outlined" id="bull-btn" autocomplete="off">
-            <label class="btn btn-outline-success custom-btn" for="bull">🐮 Bullish 📈</label>
+            <label class="btn btn-outline-success custom-btn" for="bull-btn">🐮 Bullish 📈</label>
         </div>
         <button class="btn btn-secondary custom-btn" type="submit" value="Submit">
             Submit
@@ -45,3 +47,4 @@ COMMENTS SECTION GOES HERE!
     </form>
 </div>
 <script src="/js/add-comment.js"></script>
+{{/if}}

@@ -6,7 +6,7 @@
             Title:
         </label>
         <br />
-        <input id="title" class="form-control" type="text" placeholder="Big Gainz Here 🚀" aria-label="post title"
+        <input id="title" class="form-control row" type="text" placeholder="Big Gainz Here 🚀" aria-label="post title"
             name="title">{{title}}</input>
         <!-- may need to chagne this back to a textarea for handlwbrs -->
         <br />
@@ -14,7 +14,7 @@
             Ticker:
         </label>
         <br />
-        <input id="ticker" class="form-control" type="text" placeholder="MOON!" aria-label="ticker" name="ticker"
+        <input id="ticker" class="form-control row" type="text" placeholder="MOON!" aria-label="ticker" name="ticker"
             maxlength="6">{{ticker}}</input>
         <!-- may need to chagne this back to a textarea for handlwbrs -->
         <br />
@@ -22,12 +22,12 @@
             Description:
         </label>
         <br />
-        <textarea id="description" class="form-control"
+        <textarea id="description" class="form-control row"
             placeholder="Dump all my savings into gourd 🎃 futures, earned 5.5 mil, and you can too!"
             aria-label="ticker" name="ticker" name="description" rows="5" cols="30">
           {{description}}
         </textarea>
-        <div>
+        <div class="row">
             <input type="radio" class="btn-check" name="options-outlined" id="bear-btn" autocomplete="off">
             <label class="btn btn-outline-danger custom-btn" for="bear">🐻 Bearish 📉</label>
             <input type="radio" class="btn-check" name="options-outlined" id="bull-btn" autocomplete="off">

@@ -22,19 +22,19 @@
             <div class="inline-block"></div>
             {{!-- <p class="card-body">{{post.updatedAt}}</p> --}}
             <label class="form-label" for="username">User: <span class="card-text"
-                    id="username">{{post.user_id}}</span></label>
+                    id="username">{{post.user.username}}</span></label>
             {{!-- how to grab the username... --}}
         </div>
     </div>
 </div>
 
 {{!--COMMENTS SECTION GOES HERE!--}}
-{{#each post.comment}}
+{{#each post.comments as |comment|}}
 <div class="card row m-3">
-    <p class="card-text">{{comment.text_body}}</p>
+    <p class="card-text">{{text_body}}</p>
     <div class="inline-block">
         <label class="form-label" for="username">User: <span class="card-text"
-                id="username">{{comment.user_id}}</span></label>
+                id="username">{{user.username}}</span></label>
         {{!-- how to grab the username... --}}
     </div>
 </div>

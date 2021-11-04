@@ -1,0 +1,47 @@
+{{!-- *
+*
+*
+*
+DETAILED VIEW OF A POST GOES HERE!
+*
+*
+*
+* --}}
+
+
+{{!-- *
+*
+*
+*
+COMMENTS SECTION GOES HERE!
+*
+*
+*
+* --}}
+
+
+{{!-- MAKE A COMMENT GOES HERE --}}
+<div class="mb-3 w-75">
+    <h2 class="">Make a comment...</h2>
+    <form class="add-comment-form form-group">
+        <label class="form-label" for="description">
+            Description:
+        </label>
+        <br />
+        <textarea id="description" class="form-control"
+            placeholder="Dump all my savings into gourd 🎃 futures, earned 5.5 mil, and you can too!"
+            aria-label="ticker" name="ticker" name="description" rows="5" cols="30">
+          {{description}}
+        </textarea>
+        <div>
+            <input type="radio" class="btn-check" name="options-outlined" id="bear-btn" autocomplete="off">
+            <label class="btn btn-outline-danger custom-btn" for="bear">🐻 Bearish 📉</label>
+            <input type="radio" class="btn-check" name="options-outlined" id="bull-btn" autocomplete="off">
+            <label class="btn btn-outline-success custom-btn" for="bull">🐮 Bullish 📈</label>
+        </div>
+        <button class="btn btn-secondary custom-btn" type="submit" value="Submit">
+            Submit
+        </button>
+    </form>
+</div>
+<script src="/js/add-comment.js"></script>

@@ -3,7 +3,6 @@ const Stock = require("./Stock");
 const Post = require("./Post");
 const Comment = require("./Comment");
 const Hype = require("./Hype");
-const PoolCluster = require("mysql2/typings/mysql/lib/PoolCluster");
 
 //relationships here
 User.hasMany(Post, {
@@ -35,13 +34,13 @@ Post.hasMany(Comment, {
     foreignKey: 'post_id'
 })
 
-Post.hasOne(Stock, {
-    foreignKey: 'stock_id'
-});
+// Post.hasOne(Stock, {
+//     foreignKey: 'stock_id'
+// });
 
-Post.belongsToMany(Hype, {
-    foreignKey: 'hype_count'
-})
+// Post.belongsToMany(Hype, {
+//     through: Hype
+// })
 
 Comment.belongsTo(User, {
     foreignKey: 'user_id'
@@ -51,11 +50,13 @@ Comment.belongsTo(Post, {
     foreignKey: 'post_id'
 });
 
-Hype.belongsToMany(Post, {
+Hype.belongsTo(Post, {
     foreignKey: 'post_id'
 })
 
-
+Hype.belongsTo(User, {
+    foreignKey: 'user_id'
+})
 
 
 module.exports = {User, Stock, Post, Comment, Hype};

@@ -35,6 +35,12 @@ Post.init(
     hype_count: {
       type: DataTypes.INTEGER,
     },
+    bull_count: {
+      type: DataTypes.INTEGER
+    },
+    bear_count: {
+      type: DataTypes.INTEGER
+    },
     // stock_id: {
     //   type: DataTypes.STRING,
     //   references: {

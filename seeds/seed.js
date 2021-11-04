@@ -10,29 +10,14 @@ const stockData = require('./stockData.json');
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
 
-  const users = await User.bulkCreate(userData, {
-    individualHooks: true,
-    returning: true,
-  });
+  await User.bulkCreate(userData);
 
-  const posts = await Post.bulkCreate(postData, {
-    individualHooks: true,
-    returning: true,
-  });
+  await Post.bulkCreate(postData);
 
-  const comments = await Comment.bulkCreate(commentData, {
-    individualHooks: true,
-    returning: true,
-  });
+  await Comment.bulkCreate(commentData);
 
-  const hype = await Hype.bulkCreate(hypeData, {
-    individualHooks: true,
-    returning: true,
-  });
-  const stock = await Stock.bulkCreate(stockData, {
-    individualHooks: true,
-    returning: true,
-  });
+  await Hype.bulkCreate(hypeData);
+  await Stock.bulkCreate(stockData);
   process.exit(0);
 };
 

@@ -42,7 +42,7 @@ User.init(
     },
     hype_count: {
       type: DataTypes.INTEGER,
-      allowNull: false, // need allownull here?
+      // allowNull: false, // need allownull here?
       defaultValue: 0,
     },
   },

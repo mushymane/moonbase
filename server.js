@@ -7,6 +7,7 @@ const routes = require('./controllers');
 const sequelize = require('./config/connection');
 const helpers = require('./utils/helpers');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const setTrendingStocks = require('./utils/trend-interval');
 // const finnhub = require('finnhub');
 
 const app = express();
@@ -36,3 +37,6 @@ app.use(routes);
 sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log(`Listening at port ${PORT}`));
 });
+
+setInterval(setTrendingStocks, 3600000);
+setTrendingStocks();

@@ -126,32 +126,38 @@ router.put('/:id', withAuth, async (req, res) => {
 })
 
 // delete user based on user id /api/users/:id
-router.delete('/:id', withAuth, async (req, res) => {
-    try {
-        const userData = await User.destroy({
-            where: {
-                id: req.params.id
-            }
-        })
+// router.delete('/:id', withAuth, async (req, res) => {
+//     try {
+//         const userData = await User.destroy({
+//             where: {
+//                 id: req.params.id
+//             }
+//         })
 
-        if (!userData) {
-            res.status(404).json({ message: 'no user found with that id' })
-            return;
-        }
+//         if (!userData) {
+//             res.status(404).json({ message: 'no user found with that id' })
+//             return;
+//         }
 
-        res.status(200).json(userData);
-    } catch (err) {
-        res.status(500).json(err);
-    }
-})
+//         res.status(200).json(userData);
+//     } catch (err) {
+//         res.status(500).json(err);
+//     }
+// })
 
 // gets comments based on user id /api/users/id:/comments
 router.get('/:id/comments', async (req, res) => {
     try {
         const commentData = await Comment.findAll(
-            { include: [{ model: Post }, { model: User }] },
-            { where: { post_id: req.params.id } }
+            { 
+                include: [
+                    { model: Post, attributes: ['id', 'title', 'user_id'] }, 
+                    { model: User, attributes: ['id', 'username'] }
+                ] 
+            },
+            { where: { user_id: req.params.id } }
         );
+        console.log(commentData);
         res.status(200).json(commentData);
     } catch (err) {
         res.status(500).json(err);
@@ -159,22 +165,22 @@ router.get('/:id/comments', async (req, res) => {
 })
 
 // probably not necessary imo
-router.get('/:id/comments/:cid', async (req, res) => {
-    try {
-        const commentData = await Comment.findByPk(req.params.cid, {
-            include: [{ model: User }]
-        })
+// router.get('/:id/comments/:cid', async (req, res) => {
+//     try {
+//         const commentData = await Comment.findByPk(req.params.cid, {
+//             include: [{ model: User }]
+//         })
 
-        if (!commentData) {
-            res.status(404).json({ message: 'no comment found with this comment id' })
-            return;
-        }
+//         if (!commentData) {
+//             res.status(404).json({ message: 'no comment found with this comment id' })
+//             return;
+//         }
 
-        res.status(200).json(commentData);
-    } catch (err) {
-        res.status(500).json(err);
-    }
-})
+//         res.status(200).json(commentData);
+//     } catch (err) {
+//         res.status(500).json(err);
+//     }
+// })
 
 
 module.exports = router;

@@ -38,7 +38,7 @@ async function quoteTrending() {
 
 async function createTrending() {
     var trendingWithPrice = await quoteTrending();
-    console.log(trendingWithPrice);
+    return trendingWithPrice;
 }
 
 module.exports = createTrending;

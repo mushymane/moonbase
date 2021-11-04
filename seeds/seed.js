@@ -5,7 +5,7 @@ const userData = require('./userData.json');
 const postData = require('./postData.json');
 const commentData = require('./commentData.json');
 const hypeData = require('./hypeData.json');
-const stockData = require('./stocktData.json');
+const stockData = require('./stockData.json');
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
@@ -25,11 +25,11 @@ const seedDatabase = async () => {
     returning: true,
   });
 
-  const hype = await Comment.bulkCreate(hypeData, {
+  const hype = await Hype.bulkCreate(hypeData, {
     individualHooks: true,
     returning: true,
   });
-  const stock = await Comment.bulkCreate(stockData, {
+  const stock = await Stock.bulkCreate(stockData, {
     individualHooks: true,
     returning: true,
   });

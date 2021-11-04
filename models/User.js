@@ -28,6 +28,7 @@ User.init(
     email: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
       validate: {
         isEmail: true,
       },
@@ -36,13 +37,13 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1],
+        len: [8],
       },
     },
     hype_count: {
-      type: DataTypes.FLOAT,
-      allowNull: false,
-      default: 0,
+      type: DataTypes.INTEGER,
+      allowNull: false, // need allownull here?
+      defaultValue: 0,
     },
   },
   {

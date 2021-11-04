@@ -29,19 +29,19 @@ Post.init(
       //allowNull: false,
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
+      allowNull: false
     },
     hype_count: {
-      type: DataTypes.FLOAT,
-      allowNull: false,
+      type: DataTypes.INTEGER,
     },
-    stock_id: {
-      type: DataTypes.STRING,
-      references: {
-        model: "stock",
-        key: "ticker",
-      },
-    },
+    // stock_id: {
+    //   type: DataTypes.STRING,
+    //   references: {
+    //     model: "stock",
+    //     key: "ticker",
+    //   },
+    // },
     user_id: {
       type: DataTypes.INTEGER,
       references: {

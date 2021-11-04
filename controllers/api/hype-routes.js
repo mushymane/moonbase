@@ -1,8 +1,6 @@
-const { Model, DataTypes, Sequelize } = require('sequelize');
+const router = require("express").Router();
 const { User, Post, Comment, Hype } = require('../../models');
 const withAuth = require('../../utils/auth');
-const router = require('./user-routes');
-
 
 // Get a post's hypes
 router.get('/posts/:id', withAuth, async (req, res) => {

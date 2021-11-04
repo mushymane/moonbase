@@ -34,6 +34,10 @@ Post.hasMany(Comment, {
     foreignKey: 'post_id'
 })
 
+Post.hasMany(Hype, {
+    foreignKey: 'post_id'
+})
+
 // Post.hasOne(Stock, {
 //     foreignKey: 'stock_id'
 // });

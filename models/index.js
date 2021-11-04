@@ -3,7 +3,6 @@ const Stock = require("./Stock");
 const Post = require("./Post");
 const Comment = require("./Comment");
 const Hype = require("./Hype");
-const PoolCluster = require("mysql2/typings/mysql/lib/PoolCluster");
 
 //relationships here
 User.hasMany(Post, {

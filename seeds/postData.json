@@ -1,6 +1,7 @@
 [
   {
     "title": "Big returns on AAPL today 😎",
+    "ticker": "AAPL",
     "price": 148.20,
     "description": "There are video games. Then there is Gex. I truly believe with this game humanity has reached the pinnacle of creation. Truly this game is a gift from the Messiah himself and he has granted us the beauty and grace of Enter The Gecko. The genius behind Gex has allowed the game to run at 8k 200fps with zero optimisation. But alas our pathetic human eyes are incapable of seeing the true glory of such an amazing masterpiece that we are forever kept from EVER gazing upon the true face of the beautiful lizard. I have played this game 69 times and I laugh, cry, and even rejoice because at last I have seen the living god and its name is Gex. There is not a single thing on earth or heaven that can compare to playing Gex because Gex itself is love and creation and power.",
     "hype_count": 5,
@@ -9,16 +10,19 @@
   },
   {
     "title": "BTC is a scam!",
+    "ticker": "BTC",
     "description": "I could not buy dentures with bitcoin...",
     "user_id": "1"
   },
   {
     "title": "Thanosfish is the new stock to watch!",
+    "ticker": "GME",
     "description": "BIG GAINS DIAMOND HANDS",
     "user_id": "1"
   },
   {
     "title": "TIFU by buying 4 million dollars of AAPL instead of 4 dollars",
+    "ticker": "ETH",
     "description": "I immediately hung up and then sat there in stunned silence, unable to move for what felt like an eternity. Time seemed to slow to a crawl as my stomach turned in knots, my mouth went dry, and my eyes welled with tears. I doubled over, fell out of my chair and began to sob uncontrollably on all fours on my tiled, cold office floor. The pain in my stomach grew unbearable and, blinded by my own tears, I began loudly and ferociously upchucking all four BK whoppers with cheese but no ketchup or onions I'd just eaten for lunch. My arms and legs gave out under the crushing weight of my emotional despair and my body went flat on the floor. All I could do is roll back and forth, back and forth like a rotating alligator to ease my pain as I made puke angels with my enormous, pear-shaped body. I will never understand how or why some people can be so cruel.",
     "user_id": "1"
   }

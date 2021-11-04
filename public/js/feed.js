@@ -5,14 +5,15 @@ const hypeButtonHandler = async (event) => {
     console.log(postId);
 
     //check if user already hyped a post
-    const hyped = await fetch(`/api/hype/users/${req.session.user_id}`, {
-        method: 'GET',
-        headers: {
-            'Content-Type' : 'application/json'
-        }
-    });
+    // const hyped = await fetch(`/api/hype/users/${req.session.user_id}`, {
+    //     method: 'GET',
+    //     headers: {
+    //         'Content-Type' : 'application/json'
+    //     }
+    // });
+    // commented out bc forgot user can hype post multiple times
 
-    if (!hyped) {
+    // if (!hyped) {
         const response = await fetch(`api/hype/posts/${postId}`, {
             method: 'PUT',
             headers: {
@@ -32,7 +33,7 @@ const hypeButtonHandler = async (event) => {
             console.log(response.statusText);
             alert('Failed to hype up post');
         }
-    }
+    // }
 }
 
 document.querySelector('#hype-btn').addEventListener('click', hypeButtonHandler);

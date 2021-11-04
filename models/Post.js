@@ -16,6 +16,9 @@ Post.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    ticker: {
+      type: DataTypes.STRING
+    },
     price: {
       type: DataTypes.DECIMAL,
       //allowNull: false,
@@ -29,18 +32,29 @@ Post.init(
       //allowNull: false,
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
+      allowNull: false
     },
     hype_count: {
-      type: DataTypes.FLOAT,
-      allowNull: false,
+      type: DataTypes.INTEGER,
     },
-    stock_id: {
-      type: DataTypes.STRING,
-      references: {
-        model: "stock",
-        key: "ticker",
-      },
+    bull_count: {
+      type: DataTypes.INTEGER
+    },
+    bear_count: {
+      type: DataTypes.INTEGER
+    },
+    // stock_id: {
+    //   type: DataTypes.STRING,
+    //   references: {
+    //     model: "stock",
+    //     key: "ticker",
+    //   },
+    // },
+    date_created: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW
     },
     user_id: {
       type: DataTypes.INTEGER,

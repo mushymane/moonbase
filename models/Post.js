@@ -16,6 +16,9 @@ Post.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    ticker: {
+      type: DataTypes.STRING
+    },
     price: {
       type: DataTypes.DECIMAL,
       //allowNull: false,
@@ -48,6 +51,11 @@ Post.init(
     //     key: "ticker",
     //   },
     // },
+    date_created: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW
+    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {

@@ -22,12 +22,13 @@ async function newFormHandler(event) {
         method: 'POST',
         body: JSON.stringify({
             title: title,
+            ticker: ticker,
             price: quote.c,
             change: quote.d,
             percent_change: quote.dp,
             description: description,
             hype_count: 1,
-            stock_id: ticker,
+            // stock_id: ticker,
             bear_count: bear,
             bull_count: bull,
             user_id: req.session.user_id

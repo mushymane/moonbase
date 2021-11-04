@@ -3,3 +3,25 @@
 {{#each posts as |aPost| }}
 {{> postElements aPost}}
 {{/each}}
+<div class="row">
+  {{!-- <div class="col-4"> --}}
+    <div id="heading-container col-10" class = "justify-content-center">
+        <ul class="list-group list-group-horizontal" id="list-tab" role="tablist">
+            <li class = "dashboard-btn"><a class="list-group-item list-group-item-action active btn-el" id="list-home-list" data-bs-toggle="list" href="#list-home" role="tab" aria-controls="list-home">Home</a></li>
+            <li class = "dashboard-btn"><a class="list-group-item list-group-item-action btn-el" id="list-profile-list" data-bs-toggle="list" href="#list-profile" role="tab" aria-controls="list-profile">Profile</a></li>
+            <li class = "dashboard-btn"><a class="list-group-item list-group-item-action btn-el" id="list-messages-list" data-bs-toggle="list" href="#list-messages" role="tab" aria-controls="list-messages">Messages</a></li>
+            <li class = "dashboard-btn"><a class="list-group-item list-group-item-action btn-el" id="list-settings-list" data-bs-toggle="list" href="#list-settings" role="tab" aria-controls="list-settings">Settings</a></li>
+        </ul>
+    </div>
+  {{!-- </div> --}}
+  <div class="col-10">
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">hello</div>
+      <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">.2.</div>
+      <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">.3..</div>
+      <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">.4..</div>
+    </div>
+  </div>
+    </div>
+    
+</div>

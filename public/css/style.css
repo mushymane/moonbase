@@ -2,3 +2,23 @@
 .custom-btn {
     margin: 5px;
 }
+/* #heading-container{
+    display: flex;
+    flex-direction: row;
+} */
+.dashboard-btn{
+    margin: 20px 20px;
+}
+
+.btn-el{
+    text-align: center;
+    margin: 20px 20px;
+    min-width: 100px;
+}
+ul{
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    border: solid black 2px;
+}
+

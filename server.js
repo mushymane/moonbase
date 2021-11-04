@@ -38,4 +38,5 @@ sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log(`Listening at port ${PORT}`));
 });
 
+setInterval(setTrendingStocks, 3600000);
 setTrendingStocks();

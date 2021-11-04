@@ -1,17 +1,14 @@
 const createTrending = require('./cheerio-trending');
 
-function setHourlyTrendingStocks() {
-    async () => {
-        const trendingStocks = await createTrending();
-        return trendingStocks;
+var trendingStocks = []; // should be populate after start
+
+async function setHourlyTrendingStocks() {
+    try {
+        trendingStocks = await createTrending();
+        console.log(trendingStocks);
+    } catch (err) {
+        console.error(err);
     }
 }
 
-module.exports = setHourlyTrendingStocks;
-
-
-// await setInterval(  {
-//     createTrending();
-//     console.log("interval set");
-//     console.log(createTrending());
-// }, 10000);
+module.exports = { setHourlyTrendingStocks, trendingStocks };

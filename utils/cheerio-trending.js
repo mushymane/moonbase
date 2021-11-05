@@ -50,7 +50,7 @@ async function quoteTrending() {
     } catch (err) {
         console.error(err);
     }
-    finally{
+    finally {
         console.log(trendingStock);
     }
 }

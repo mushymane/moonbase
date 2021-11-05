@@ -1,7 +1,7 @@
 var hypeCounts = document.querySelectorAll('#hypecount');
 
 hypeCounts.forEach((post) => {
-    console.log(post)
+    //console.log(post)
     var postId = post.parentNode.parentNode.parentNode.dataset.postId
     fetch(`api/hype/posts/${postId}/hypecount`)
     .then((response) => response.json()) 
@@ -40,9 +40,9 @@ const hypeButtonHandler = async (event) => {
         });
 
         // const response = await fetch(`api/hype/posts/`)
-        console.log(response);
+        //console.log(response);
         if (response.ok) {
-            console.log('response okk');
+            //console.log('response okk');
             // const newHypeCount = await fetch(`api/hype/posts/${postId}/hypecount`, {
             //     method: 'GET',
             //     headers: {

@@ -2,7 +2,7 @@
 <div class="card mt-3" style="width: 100%;" data-post-id="{{post.id}}">
     <a href="/stock/{{post.ticker}}" class="text-muted">${{post.ticker}}</a>
     <a href="/post/{{post.id}}" style="text-decoration: none;">
-        <h3 class="card-title px-2 py-1">🔥<span id="hypecount">{{post.hype_count}}</span>🔥</h3>
+        <h3 class="card-title px-2 py-1">🔥<span id="hypecount"></span>🔥</h3>
         <h3 class="card-title px-2 py-1"> {{post.title}}</h3>
     </a>
     <div class="card-body">
@@ -18,3 +18,5 @@
     </div>
 </div>
 {{/each}}
+
+<script src="./js/feed.js"></script>

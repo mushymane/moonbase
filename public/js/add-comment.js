@@ -20,7 +20,6 @@ async function newFormHandler(event) {
             method: 'POST',
             body: JSON.stringify({
                 text_body: text_body,
-                post_id: post_id,
                 bear_count: bear,
                 bull_count: bull
             }),

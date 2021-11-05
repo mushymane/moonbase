@@ -102,7 +102,7 @@ router.put('/posts/:id', async (req, res) => {
     }
 })
 
-
+// Awards 100 hype to a poster
 router.put("/postcredit", async (req, res) => {
     try {
         const userData = await User.findByPk(req.session.user_id);
@@ -125,6 +125,29 @@ router.put("/postcredit", async (req, res) => {
     }
 });
 
+
+// Awards 100 hype to a commenter
+router.put("/commentcredit", async (req, res) => {
+    try {
+        const userData = await User.findByPk(req.session.user_id);
+        const user = userData.get({ plain: true });
+
+        let currentHype = user.hype_count;
+        newHype = currentHype + 50;
+        
+    } catch (err) {
+        res.status(400).json(err);
+    } finally {
+        const hypeData = await User.update(
+            { hype_count: newHype },
+            {
+                where: {id: req.session.user_id}
+            }
+        );
+        console.log(hypeData);
+        // res.status(200).json(hypeData);
+    }
+});
 
 // const postHypeData = await Post.update(
 //     {

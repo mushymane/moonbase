@@ -5,7 +5,7 @@ var trendingStocks = []; // should be populate after start
 async function setHourlyTrendingStocks() {
     try {
         trendingStocks = await createTrending();
-        console.log(trendingStocks);
+        // console.log(trendingStocks);
     } catch (err) {
         console.error(err);
     }

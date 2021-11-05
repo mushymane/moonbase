@@ -99,8 +99,6 @@ router.post("/", async (req, res) => {
         });
         // console.log(postData);
         res.status(200).json(postData);
-        // const userData = await User.get(req.session.user_id {
-        // })
     } catch (err) {
         res.status(400).json(err);
     }

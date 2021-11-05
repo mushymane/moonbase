@@ -5,7 +5,9 @@
         "post_id": 2
     },
     {
-        "text_body": "I can tell when people are being judgmental just by looking at them.",
+        "text_body": "This comment has BB too. I can tell when people are being judgmental just by looking at them.",
+        "bull_count": 0,
+        "bear_count": 1,
         "user_id": 1,
         "post_id": 2
     },
@@ -13,5 +15,12 @@
         "text_body": "Let beer be for those who are perishing, wine for those who are in anguish!",
         "user_id": 3,
         "post_id": 2
+    },
+    {
+        "text_body": "This comment has BB. I can tell when people are being judgmental just by looking at them.",
+        "user_id": 1,
+        "post_id": 5,
+        "bull_count": 0,
+        "bear_count": 1
     }
 ]

@@ -1,8 +1,8 @@
 <div class="container">
     <div class="row">
         <div class="col text-center">
-            <h1 class="stock">${{ticker}}</h1>
-            <h1 class="stock">${{price}}</h1>
+            <h1 class="stock stock-val">${{ticker}}</h1>
+            <h1 class="stock stock-val">${{price}}</h1>
         </div>
         {{!-- <div class="col text-center">
             
@@ -12,25 +12,26 @@
 
 <div class="container">
     <div class="row">
-        <div class="col text-center">
-            <h4 id="stocklabel">change</h4>
-            <h2 class="stock">${{change}}</h2>
+        <div class = "col text-center">
+            <h4 class="stock-val" id="stocklabel">change</h4>
+            <h2 class="stock-val stock">{{change}}</h2>
+
         </div>
         <div class="col text-center">
-            <h4 id="stocklabel">% change</h4>
-            <h2 class="stock">{{percent_change}}%</h2>
+            <h4 class="stock-val" id="stocklabel">% change</h4>
+            <h2 class="stock-val stock">{{percent_change}}%</h2>
         </div>
         <div class="col text-center">
-            <h4 id="stocklabel">open</h4>
-            <h2 class="stock">${{open}}</h2>
+            <h4 class="stock-val" id="stocklabel">open</h4>
+            <h2 class="stock-val stock">${{open}}</h2>
         </div>
         <div class="col text-center">
-            <h4 id="stocklabel">high</h4>
-            <h2 class="stock">${{high}}</h2>
+            <h4 class="stock-val" id="stocklabel">high</h4>
+            <h2 class="stock-val stock">${{high}}</h2>
         </div>
         <div class="col text-center">
-            <h4 id="stocklabel">low</h4>
-            <h2 class="stock">${{low}}</h2>
+            <h4 class="stock-val" id="stocklabel">low</h4>
+            <h2 class="stock-val stock">${{low}}</h2>
         </div>
     </div>
 </div>

@@ -16,7 +16,7 @@ const seedDatabase = async () => {
 
   await Comment.bulkCreate(commentData);
 
-  await Hype.bulkCreate(hypeData);
+  // await Hype.bulkCreate(hypeData);
   await Stock.bulkCreate(stockData);
   process.exit(0);
 };

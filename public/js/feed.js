@@ -10,7 +10,7 @@ hypeCounts.forEach((post) => {
         // document.getElementById('hypecount').innerHTML = hype.count;
 
     });
-})
+});
 
 const hypeButtonHandler = async (event) => {
     event.preventDefault();

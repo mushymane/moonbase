@@ -8,7 +8,7 @@ async function stockQuote(ticker) {
     try {
         let userQuote = ticker;
             const completeQuoteQuery = `${baseUrl}quote?symbol=${userQuote}${apiKey}`;
-            const response = await axios.get(completeQuoteQuery)
+            const response = await axios.get(completeQuoteQuery);
             // console.log(response.data);
             return response.data; // response explained below
     } catch (err) {

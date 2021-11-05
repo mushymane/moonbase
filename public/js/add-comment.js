@@ -40,5 +40,3 @@ async function newFormHandler(event) {
 }
 
 document.querySelector('.add-comment-form').addEventListener('submit', newFormHandler);
-
-document.get

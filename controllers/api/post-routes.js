@@ -85,7 +85,7 @@ router.get("/user/:id", async (req, res) => {
 //   });
 
 // **************************************** TODO: UNCOMMENT
-// adds new post /api/posts
+// Adds new post /api/posts
 // router.post("/", withAuth, async (req, res) => {
 router.post("/", async (req, res) => {
     try {

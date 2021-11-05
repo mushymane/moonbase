@@ -63,9 +63,7 @@ router.get('/posts/:id/hypecount', async (req, res) => {
                 post_id: req.params.id
             }
         });
-        console.log(res)
         res.status(200).json(postHypeCount);
-        return postHypeCount;
     } catch (err) {
         res.status(500).json(err);
     }
@@ -80,7 +78,6 @@ router.get('/posts/:id/userhc', async (req, res) => {
                 user_id: req.session.user_id
             }
         })
-        console.log(userPostHypeCount)
         res.status(200).json(userPostHypeCount)
     } catch (err) {
         res.status(500).json(err);

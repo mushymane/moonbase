@@ -46,7 +46,7 @@ async function newFormHandler(event) {
         // console.log(hypeResponse);
         document.location.replace('/');
     } else {
-        alert('Failed to PUT hype :(');
+        alert('Failed to PUT hype for youR post:(');
     }
 }
 

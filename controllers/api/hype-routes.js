@@ -55,7 +55,6 @@ router.get('/users/:id/', async (req, res) => {
 // Get a post's hype count
 router.get('/posts/:id/hypecount', async (req, res) => {
     try {
-        console.log('BLAHHH')
         // const postHypeCount = await Post.findByPk(req.params.id, {
         //      attributes: ['hype_count'] 
         // })

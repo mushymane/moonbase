@@ -42,3 +42,16 @@ body {
 .stock-val{
     overflow-y: hidden;
 }
+
+h1, h2, h5, b {
+    overflow-y: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+.list-group-item-action:hover {
+    background: rgb(211, 238, 185) !important;
+    transition: .25s;
+}

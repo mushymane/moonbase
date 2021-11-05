@@ -51,7 +51,7 @@ async function quoteTrending() {
         console.error(err);
     }
     finally {
-        console.log(trendingStock);
+        // console.log(trendingStock);
     }
 }
 

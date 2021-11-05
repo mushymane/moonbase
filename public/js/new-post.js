@@ -13,6 +13,7 @@ async function newFormHandler(event) {
         bull = 1;
     }
 
+    // Creates new post
     const response = await fetch(`/api/posts`, {
         method: 'POST',
         body: JSON.stringify({
@@ -28,10 +29,24 @@ async function newFormHandler(event) {
         },
     });
     if (response.ok) {
-        console.log(response);
+        // console.log(response);
         document.location.replace('/');
     } else {
         alert('Failed to add post :(');
+    }
+
+    // Updates Poster's hype count
+    const hypeResponse = await fetch(`/api/hype/postcredit`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+    if (hypeResponse.ok) {
+        // console.log(hypeResponse);
+        document.location.replace('/');
+    } else {
+        alert('Failed to PUT hype :(');
     }
 }
 

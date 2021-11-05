@@ -4,10 +4,11 @@
         <h5 class="card-title row m-2">
             {{post.title}}
         </h5>
+        {{#if post.price}}
         <label class="form-label" for="basic-metrics mx-2">Metrics at time of posting</label>
         <div class="row" id="basic-metrics">
             <div class="col-6">
-                <label class="form-label mx-2" for="price">Price: <span class="card-text"
+                <label class="form-label mx-2" for="price">Price: $<span class="card-text"
                         id="price">{{post.price}}</span></label>
 
                 <label class="form-label mx-2" for="change">Change: <span class="card-text"
@@ -17,24 +18,46 @@
                         id="percent-change">{{post.percent_change}}%</span></label>
             </div>
         </div>
+        {{/if}}
         <div class="card-body row">
             <p class="card-text">{{post.description}}</p>
-            <div class="inline-block"></div>
-            {{!-- <p class="card-body">{{post.updatedAt}}</p> --}}
-            <label class="form-label" for="username">User: <span class="card-text"
-                    id="username">{{post.user.username}}</span></label>
-            {{!-- how to grab the username... --}}
+            <div class="row">
+                <label class="form-label lg-col-2 md-col-4" for="username">User: <span class="card-text"
+                        id="username">{{post.user.username}}</span></label>
+                <p class="card-body lg-col-2 md-col-4">{{post.date_created}}</p>
+                {{#if post.bear_count}}
+                <div>
+                    <div class="danger badge rounded-pill bg-danger lg-col-2 md-col-4">🐻 Bearish 📉</div>
+                </div>
+                {{/if}}
+                {{#if post.bull_count}}
+                <div>
+                    <div class="danger badge rounded-pill bg-success lg-col-2 md-col-4">🐮 Bullish 📈</div>
+                </div>
+                {{/if}}
+            </div>
         </div>
     </div>
 </div>
 
 {{!--COMMENTS SECTION GOES HERE!--}}
 {{#each post.comments as |comment|}}
-<div class="card row m-3">
-    <p class="card-text">{{text_body}}</p>
-    <div class="inline-block">
+<div class="card card-body row m-3">
+    <p class="card-text col-10">{{comment.text_body}}</p>
+    <div class="">
         <label class="form-label" for="username">User: <span class="card-text"
                 id="username">{{user.username}}</span></label>
+        <p class="card-body lg-col-2 md-col-4">{{comment.created_at}}</p>
+        {{#if comment.bear_count}}
+        <div>
+            <div class="danger badge rounded-pill bg-danger lg-col-2 md-col-4">🐻 Bearish 📉</div>
+        </div>
+        {{/if}}
+        {{#if comment.bull_count}}
+        <div>
+            <div class="danger badge rounded-pill bg-success lg-col-2 md-col-4">🐮 Bullish 📈</div>
+        </div>
+        {{/if}}
         {{!-- how to grab the username... --}}
     </div>
 </div>
@@ -42,23 +65,22 @@
 
 
 {{!-- MAKE A COMMENT GOES HERE --}}
-{{#if loggedIn}}
+{{#if logged_in}}
 <div class="row m-3 w-75">
     <form class="add-comment-form form-group row">
         <label class="form-label" for="description">
             Add a comment...
         </label>
         <br />
-        <textarea id="description" class="form-control"
+        <textarea id="text_body" class="form-control"
             placeholder="Bruh, who puts their life savings in ornamental gourd futures? What is wrong with you??????"
-            aria-label="ticker" name="ticker" name="description" rows="6" cols="30">
-              {{description}}
+            name="text_body" rows="6" cols="30">
             </textarea>
         <div class="row">
             <input type="radio" class="btn-check" name="options-outlined" id="bear-btn" autocomplete="off">
-            <label class="btn btn-outline-danger custom-btn" for="bear-btn">🐻 Bearish 📉</label>
+            <label class="btn btn-danger custom-btn" for="bear-btn">🐻 Bearish 📉</label>
             <input type="radio" class="btn-check" name="options-outlined" id="bull-btn" autocomplete="off">
-            <label class="btn btn-outline-success custom-btn" for="bull-btn">🐮 Bullish 📈</label>
+            <label class="btn btn-success custom-btn" for="bull-btn">🐮 Bullish 📈</label>
         </div>
         <button class="btn btn-secondary custom-btn" type="submit" value="Submit">
             Submit

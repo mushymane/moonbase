@@ -5,12 +5,15 @@ const apiKey = `&token=${process.env.API_KEY}`;
 
 
 async function stockMetric(ticker) {
-    let userMetric= ticker
-    const completeMetricQuery = `${baseUrl}stock/metric?symbol=${userMetric}&metric=all${apiKey}`;
-    const response = await axios.get(completeMetricQuery)
-    // console.log(response.data.metric); // Probably don't need all of these
-
-    return response.data.metric;
+    try {
+        let userMetric = ticker
+        const completeMetricQuery = `${baseUrl}stock/metric?symbol=${userMetric}&metric=all${apiKey}`;
+        const response = await axios.get(completeMetricQuery)
+        // console.log(response.data.metric); // Probably don't need all of these
+        return response.data.metric;
+    } catch (err) {
+        console.error(err);
+    }
 }
 
 module.exports = stockMetric;

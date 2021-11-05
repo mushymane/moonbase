@@ -42,6 +42,9 @@ async function quoteTrending() {
     } catch (err) {
         console.error(err);
     }
+    finally{
+        console.log(trendingStock);
+    }
 }
 
 async function createTrending() {

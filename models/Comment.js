@@ -12,7 +12,7 @@ Comment.init(
       autoIncrement: true,
     },
     text_body: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING
     },
     post_id: {
         type: DataTypes.INTEGER,
@@ -21,6 +21,12 @@ Comment.init(
           key: 'id',
         },
     },
+    bear_count: {
+      type: DataTypes.INTEGER
+    },
+    bull_count: {
+      type: DataTypes.INTEGER
+    },
     created_at: {
       type: DataTypes.DATE,
       allowNull: false,
@@ -28,6 +34,7 @@ Comment.init(
     },
     user_id: {
       type: DataTypes.INTEGER,
+      //allowNull: false,
       references: {
         model: 'user',
         key: 'id',

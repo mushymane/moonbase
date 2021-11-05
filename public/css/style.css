@@ -1,4 +1,26 @@
+body {
+    background-image: url(../images/apollo-17-moonscape.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
 .custom-btn {
     margin: 5px;
 }
+.dashboard-btn{
+    margin: 20px 20px;
+}
+
+.btn-el{
+    text-align: center;
+    margin: 20px 2vw;
+    min-width: 10vw;
+}
+.dashboard-group{
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 50%;
+    justify-content: space-evenly;
+}
+

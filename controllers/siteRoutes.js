@@ -109,7 +109,6 @@ router.get('/dashboard/edit/:id', withAuth, async (req, res) => {
 // TODO
 router.get('/trending', async (req, res) => {
     // stock = await cheerioTrending();
-    console.log("VVVVVVVVVVV");
     console.log(stock);
     try {
         res.render('trending', {

@@ -20,6 +20,14 @@ async function loadTrending() {
                 low: 0
             });
         });
+
+        for (var i = 0; i < trendingStock.length; i++) {
+            let badStock = trendingStock[i].ticker;
+            if (badStock.includes(".")) {
+                trendingStock.splice(i, 1);
+            }
+        }
+
         return trendingStock;
     } catch (err) {
         console.error(err);
@@ -42,7 +50,7 @@ async function quoteTrending() {
     } catch (err) {
         console.error(err);
     }
-    finally{
+    finally {
         console.log(trendingStock);
     }
 }

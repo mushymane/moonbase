@@ -24,7 +24,7 @@
             <div class="row">
                 <label class="form-label lg-col-2 md-col-4" for="username">User: <span class="card-text"
                         id="username">{{post.user.username}}</span></label>
-                <p class="card-body lg-col-2 md-col-4">{{post.date_created}}</p>
+                <p class="card-body lg-col-2 md-col-4">{{format_date post.date_created}}</p>
                 {{#if post.bear_count}}
                 <div>
                     <div class="danger badge rounded-pill bg-danger lg-col-2 md-col-4">🐻 Bearish 📉</div>
@@ -47,7 +47,7 @@
     <div class="">
         <label class="form-label" for="username">User: <span class="card-text"
                 id="username">{{user.username}}</span></label>
-        <p class="card-body lg-col-2 md-col-4">{{comment.created_at}}</p>
+        <p class="card-body lg-col-2 md-col-4">{{format_date comment.date_created}}</p>
         {{#if comment.bear_count}}
         <div>
             <div class="danger badge rounded-pill bg-danger lg-col-2 md-col-4">🐻 Bearish 📉</div>

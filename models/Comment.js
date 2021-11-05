@@ -27,7 +27,7 @@ Comment.init(
     bull_count: {
       type: DataTypes.INTEGER
     },
-    created_at: {
+    date_created: {
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: DataTypes.NOW

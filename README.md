@@ -5,7 +5,7 @@
 
 ## Table of Contents
 
-- [moonbase](#moonbase)
+- [Moonbase](#moonbase)
   - [Table of Contents](#table-of-contents)
   - [Description](#description)
   - [Features](#features)

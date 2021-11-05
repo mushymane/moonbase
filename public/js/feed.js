@@ -1,3 +1,17 @@
+var hypeCounts = document.querySelectorAll('#hypecount');
+
+hypeCounts.forEach((post) => {
+    console.log(post)
+    var postId = post.parentNode.parentNode.parentNode.dataset.postId
+    fetch(`api/hype/posts/${postId}/hypecount`)
+    .then((response) => response.json()) 
+    .then((hype) => {
+        post.innerHTML = hype.count;
+        // document.getElementById('hypecount').innerHTML = hype.count;
+
+    });
+})
+
 const hypeButtonHandler = async (event) => {
     event.preventDefault();
 
@@ -36,12 +50,17 @@ const hypeButtonHandler = async (event) => {
             //     }
             // })
 
+
+
             fetch(`api/hype/posts/${postId}/hypecount`)
                 .then((response) => response.json()) 
                 .then((hype) => {
-                    console.log(hype.count); //3
-                    document.getElementById('hypecount').innerHTML = hype.count;
-                });
+                    console.log(event.target.parentNode.parentNode.querySelector('#hypecount'));
+                    event.target.parentNode.parentNode.querySelector('#hypecount').innerHTML = hype.count;
+
+                })
+            
+            
 
             // if (newHypeCount.ok) {
             //     console.log('AW HEcK', newHypeCount.json())

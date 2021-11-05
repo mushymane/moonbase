@@ -1,0 +1,34 @@
+<a href="/post/{{id}}" class="post-container">
+
+  <div class="card mt-3" style="width: 100%;" data-post-id="{{id}}">
+    <a href="/stock/{{ticker}}" class="text-muted">${{ticker}}</a>
+    <a href="/post/{{id}}" style="text-decoration: none;">
+      <h3 class="card-title px-2 py-1">🔥<span
+          id="hypecount"
+        >{{hype_count}}</span>🔥</h3>
+      <h3 class="card-title px-2 py-1"> {{title}}</h3>
+    </a>
+    <div class="card-body">
+      <p class="card-text">{{description}}</p>
+    </div>
+    <div class="card-body">
+      <button type="button" class="btn btn-warning" id="hype-btn">🔥 HYPE 🔥</button>
+      <button
+        type="button"
+        class="btn btn-outline-success"
+        id="bull-btn"
+      >{{bull_count}} 🐮</button>
+      <button
+        type="button"
+        class="btn btn-outline-danger"
+        id="bear-btn"
+      >{{bear_count}} 🐻</button>
+    </div>
+    <div class="card-footer text-muted">
+      Posted by
+      {{User.username}}
+      on
+      {{format_date date_created}}
+    </div>
+  </div>
+</a>

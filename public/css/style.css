@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Hepta+Slab&family=Red+Hat+Mono&display=swap');
+
 *{
     overflow-x:hidden;
+    /* color: white; */
+    font-family: 'Red Hat Mono', monospace;
 }
 body {
     /* background-image: url(../images/apollo-17-moonscape.jpg); */

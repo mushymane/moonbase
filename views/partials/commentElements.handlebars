@@ -1,7 +1,21 @@
 <div class="card">
   <div class="card-body">
+    <p class="card-text text-muted">
+        {{format_date date_created}}
+        {{#if bear_count}}
+        <div>
+          <div class="danger badge rounded-pill bg-danger lg-col-2 md-col-4">🐻
+            Bearish 📉</div>
+        </div>
+      {{/if}}
+      {{#if bull_count}}
+        <div>
+          <div class="danger badge rounded-pill bg-success lg-col-2 md-col-4">🐮
+            Bullish 📈</div>
+        </div>
+      {{/if}}
+    </p>
     <h5 class="card-title">{{text_body}}</h5>
-    <p class="card-text text-muted">{{format_date date_created}}</p>
     <a href="/post/{{post_id}}" class="btn btn-primary">View Post</a>
   </div>
 </div>

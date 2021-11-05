@@ -6,10 +6,25 @@ const apiKey = `&token=${process.env.API_KEY}`;
 
 async function stockQuote(ticker) {
     try {
-        let userQuote = ticker
-        const completeQuoteQuery = `${baseUrl}quote?symbol=${userQuote}${apiKey}`;
-        const response = await axios.get(completeQuoteQuery)
-        return response.data; // response explained below
+        let userQuote = ticker;
+        if (ticker === 'LSPD.TO' || ticker === 'D05.SI') {
+            let badStock = {
+                c: 0,
+                d: 0,
+                dp: 0,
+                h: 0,
+                l: 0,
+                o: 0,
+                pc: 0,
+                t: 0
+            }
+            return badStock;
+        } else {
+            const completeQuoteQuery = `${baseUrl}quote?symbol=${userQuote}${apiKey}`;
+            const response = await axios.get(completeQuoteQuery)
+            // console.log(response.data);
+            return response.data; // response explained below
+        }
     } catch (err) {
         console.error(err);
     }

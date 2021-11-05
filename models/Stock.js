@@ -1,5 +1,4 @@
-const { Model, DataTypes, INTEGER, NUMBER } = require("sequelize");
-const bcrypt = require("bcrypt");
+const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
 class Stock extends Model {
@@ -23,37 +22,37 @@ Stock.init(
     },
     name: {
       type: DataTypes.STRING,  // From axios-search or axios-all-symbol. 'description' on both
-      allowNull: false,
+      // allowNull: false,
     },
     price: {
       type: DataTypes.DECIMAL, // From axios-quote 'c'
-      allowNull: false,
-      default: Number.MIN_VALUE
+      // allowNull: false,
+      // default: Number.MIN_VALUE
     },
     change: {
       type: DataTypes.DECIMAL, // From axios-quote 'p'
-      allowNull: false,
-      default: Number.MIN_VALUE
+      // allowNull: false,
+      // default: Number.MIN_VALUE
     },
     percent_change: {
       type: DataTypes.DECIMAL, // From axios-quote 'dp'
-      allowNull: false,
-      default: Number.MIN_VALUE
+      // allowNull: false,
+      // default: Number.MIN_VALUE
     },
     open: {
       type: DataTypes.DECIMAL, // From axios-quote 'o'
-      allowNull: false,
-      default: Number.MIN_VALUE
+      // allowNull: false,
+      // default: Number.MIN_VALUE
     },
     high: {
       type: DataTypes.DECIMAL, // From axios-quote  'h'
-      allowNull: false,
-      default: Number.MIN_VALUE
+      // allowNull: false,
+      // default: Number.MIN_VALUE
     },
     low: {
       type: DataTypes.DECIMAL, // From axios-quote  'l'
-      allowNull: false,
-      default: Number.MIN_VALUE
+      // allowNull: false,
+      // default: Number.MIN_VALUE
     },
   },
   {

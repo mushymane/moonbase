@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { User, Post, Comment, Hype, Stock } = require("../../models");
 const withAuth = require("../../utils/auth");
+const quotePrice = require('../../utils/axios-quote');
 
 /* gets all posts with path /api/posts */
 router.get("/", async (req, res) => {
@@ -88,11 +89,18 @@ router.get("/user/:id", async (req, res) => {
 // router.post("/", withAuth, async (req, res) => {
 router.post("/", async (req, res) => {
     try {
+        const quote = await quotePrice(req.body.ticker);
         const postData = await Post.create({
             ...req.body,
-            // user_id: req.session.user_id,
+            price: quote.c,
+            change: quote.d,
+            percent_change: quote.dp,
+            user_id: req.session.user_id
         });
+        // console.log(postData);
         res.status(200).json(postData);
+        // const userData = await User.get(req.session.user_id {
+        // })
     } catch (err) {
         res.status(400).json(err);
     }
@@ -116,7 +124,7 @@ router.put("/:id", async (req, res) => {
             res.status(404).json({ message: "No Post found with this id" });
             return;
         }
-        res.status(200).json({ message: 'user succesdsuflly updated' });
+        res.status(200).json({ message: 'user successfUlly updated' });
     } catch (err) {
         console.log(err);
         res.json(err);
@@ -152,7 +160,6 @@ router.get("/:id/comments", async (req, res) => {
                 include: [
                     { model: Post, attributes: ['title', 'user_id'] },
                     { model: User, attributes: ['username'] },
-                    
                 ]
             }
         );
@@ -167,10 +174,10 @@ router.post('/:id/comment', async (req, res) => {
 // router.post('/:id/comment', withAuth, async (req, res) => {
     try {
         const newComment = await Comment.create({
-            post_id: req.params.id,
-            user_id: req.session.user_id,
-            ...req.body
-           
+//             post_id: req.params.id,
+            ...req.body,
+            user_id: req.session.user_id
+
         });
         res.status(200).json(newComment);
     } catch (err) {

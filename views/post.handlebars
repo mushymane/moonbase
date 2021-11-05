@@ -51,12 +51,12 @@
             {{!-- <div class="row"> --}}
                 <label class="form-label lg-col-2 md-col-4" for="username"><span class="card-text fw-lighter"
                         id="username">posted by {{comment.user.username}} on {{format_date comment.date_created}}</span></label>
-                {{#if post.bear_count}}
+                {{#if comment.bear_count}}
                 <div>
                     <div class="danger badge rounded-pill bg-danger lg-col-2 md-col-4">🐻 Bearish 📉</div>
                 </div>
                 {{/if}}
-                {{#if post.bull_count}}
+                {{#if comment.bull_count}}
                 <div>
                     <div class="danger badge rounded-pill bg-success lg-col-2 md-col-4">🐮 Bullish 📈</div>
                 </div>

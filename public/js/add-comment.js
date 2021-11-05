@@ -15,10 +15,11 @@ async function newFormHandler(event) {
         } else if (document.getElementById('bull-btn').checked) {
             bull = 1;
         }
-
-        const response = await fetch(`/api/posts/:id/comment`, {
+        console.log(text_body)
+        const response = await fetch(`/api/posts/${post_id}/comment`, {
             method: 'POST',
             body: JSON.stringify({
+                
                 text_body: text_body,
                 bear_count: bear,
                 bull_count: bull

@@ -1,4 +1,5 @@
-const quotePrice = require('./axios-quote');
+const quotePrice = require('./utils/axios-quote');
+// utils\axios-quote.js
 
 async function newFormHandler(event) {
     event.preventDefault();
@@ -45,4 +46,4 @@ async function newFormHandler(event) {
     }
 }
 
-document.getElementById('.new-post-form').addEventListener('submit', newFormHandler);
+document.querySelector('.new-post-form').addEventListener('submit', newFormHandler);

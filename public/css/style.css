@@ -1,5 +1,6 @@
 body {
-    background-image: url(../images/apollo-17-moonscape.jpg);
+    /* background-image: url(../images/apollo-17-moonscape.jpg); */
+    background-image: url(../images/synthwave2.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -24,3 +25,10 @@ body {
     justify-content: space-evenly;
 }
 
+.stock {
+    color: white;
+}
+
+#stocklabel {
+    color: rgb(228, 228, 228);
+}

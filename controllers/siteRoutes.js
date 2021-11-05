@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { User, Post, Comment, Hype, Stock } = require('../models');
-
+const quotePrice = require('../utils/axios-quote');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -57,7 +57,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
     try {
         const userData = await User.findByPk(req.session.user_id, {
             attributes: { exclude: ['password'] },
-            include: [{ model: Post }, {model: Comment}, {model: Hype}]
+            include: [{ model: Post }, { model: Comment }, { model: Hype }]
         });
 
         const user = userData.get({ plain: true });
@@ -89,7 +89,7 @@ router.get('/dashboard/new', withAuth, async (req, res) => {
 })
 
 // Also display comments on edit post page?
-router.get('/dashboard/edit/:id', withAuth, async (req,res) => {
+router.get('/dashboard/edit/:id', withAuth, async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id);
         const post = await postData.get({ plain: true });
@@ -118,7 +118,81 @@ router.get('/trending', async (req, res) => {
 })
 
 //TODO get individual stock url to view comments as well path: /trending/:tickerid, much like single-post on the techblog
+router.get('/stock/:id', async (req, res) => {
+    try {
+        const quote = await quotePrice(req.params.id);
 
+        const stock = {
+            ticker: req.params.id,
+            price: quote.c,
+            change: quote.d,
+            percent_change: quote.dp,
+            open: quote.o,
+            high: quote.h,
+            low: quote.l
+        };
+        const postData = await Post.findAll({
+            where: { ticker: req.params.id } ,
+            include: [
+                { model: User, attributes: ['username'] },
+                { model: Hype },
+                
+                ]},
+            
+        
+        );
+
+        const posts = postData.map((post) => post.get({ plain: true }));
+
+        // const stockData = await Stock.findByPk(req.params.id, {
+        //     include: [{ model: Post }]
+        // })
+
+        
+
+        // if (!stockData) {
+        //     const newStock = await Stock.create({
+        //         ticker: req.params.id,
+        //         price: quote.c,
+        //         change: quote.d,
+        //         percent_change: quote.dp,
+        //         open: quote.o,
+        //         high: quote.h,
+        //         low: quote.l
+        //     });
+            
+        //     const stock = newStock.get({ plain: true });
+
+        //     res.render('stock', {
+        //         ...stock
+        //     })
+        // } else if (stockData) {
+        //     const updatedStock = await Stock.update({
+        //         price: quote.c,
+        //         change: quote.d,
+        //         percent_change: quote.dp,
+        //         open: quote.o,
+        //         high: quote.h,
+        //         low: quote.l
+        //     });
+
+        //     const stock = updatedStock.get({ plain: true });
+
+        //     res.render('stock', {
+        //         ...stock,
+        //         logged_in: req.session.logged_in
+        //     })
+        // }
+
+        res.render('stock', {
+            ...stock,
+            posts,
+            logged_in: req.session.logged_in
+        })
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
 
 router.get('/login', (req, res) => {
     if (req.session.logged_in) {

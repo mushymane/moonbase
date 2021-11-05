@@ -1,20 +1,23 @@
 {{!-- DETAILED VIEW OF A POST GOES HERE! --}}
-<div class="m-3">
-    <div class="m-3 card">
+<div class = "justify-content-center">
+<div class="m-3" >
+    <div class="m-3 card" style = "border: solid black 5px; border-radius: 15px;">
         <h5 class="card-title row m-2">
             {{post.title}}
         </h5>
+        <span class="fw-lighter card-text" id="username">&nbsp;&nbsp;Posted by {{post.user.username}} on {{format_date post.date_created}}</span>
         {{#if post.price}}
-        <label class="form-label" for="basic-metrics mx-2">Metrics at time of posting</label>
+        <label class="form-label" for="basic-metrics mx-2">&nbsp;&nbsp;Metrics at time of posting:</label>
         <div class="row" id="basic-metrics">
             <div class="col-6">
-                <label class="form-label mx-2" for="price">Price: $<span class="card-text"
+                <label class="form-label mx-2" for="price">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Price: $<span class="card-text"
                         id="price">{{post.price}}</span></label>
 
-                <label class="form-label mx-2" for="change">Change: $<span class="card-text"
+
+                <label class="form-label mx-2" for="change">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Change: <span class="card-text"
                         id="change">{{post.change}}</span></label>
 
-                <label class="form-label mx-2" for="percent-change">Percent Change: <span class="card-text"
+                <label class="form-label mx-2" for="percent-change">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Percent Change: <span class="card-text"
                         id="percent-change">{{post.percent_change}}%</span></label>
             </div>
         </div>
@@ -22,9 +25,8 @@
         <div class="card-body row">
             <p class="card-text">{{post.description}}</p>
             <div class="row">
-                <label class="form-label lg-col-2 md-col-4" for="username">User: <span class="card-text"
-                        id="username">{{post.user.username}}</span></label>
-                <p class="card-body lg-col-2 md-col-4">{{format_date post.date_created}}</p>
+                {{!-- <label class="form-label lg-col-2 md-col-4" for="username"></label> --}}
+                {{!-- <p class="fw-lighter card-body lg-col-2 md-col-4"></p> --}}
                 {{#if post.bear_count}}
                 <div>
                     <div class="danger badge rounded-pill bg-danger lg-col-2 md-col-4">🐻 Bearish 📉</div>
@@ -42,23 +44,24 @@
 
 {{!--COMMENTS SECTION GOES HERE!--}}
 {{#each post.comments as |comment|}}
-<div class="card card-body row m-3">
+<div class="card card-body row m-3 w-75 justify-content-center" style = "border: solid #282828 5px; border-radius: 15px;">
     <p class="card-text col-10">{{comment.text_body}}</p>
     <div class="">
-        <label class="form-label" for="username">User: <span class="card-text"
-                id="username">{{user.username}}</span></label>
-        <p class="card-body lg-col-2 md-col-4">{{format_date comment.date_created}}</p>
-        {{#if comment.bear_count}}
-        <div>
-            <div class="danger badge rounded-pill bg-danger lg-col-2 md-col-4">🐻 Bearish 📉</div>
-        </div>
-        {{/if}}
-        {{#if comment.bull_count}}
-        <div>
-            <div class="danger badge rounded-pill bg-success lg-col-2 md-col-4">🐮 Bullish 📈</div>
-        </div>
-        {{/if}}
-        {{!-- how to grab the username... --}}
+        <p class="card-text">{{post.description}}</p>
+            {{!-- <div class="row"> --}}
+                <label class="form-label lg-col-2 md-col-4" for="username"><span class="card-text fw-lighter"
+                        id="username">posted by {{comment.user.username}} on {{format_date comment.date_created}}</span></label>
+                {{#if post.bear_count}}
+                <div>
+                    <div class="danger badge rounded-pill bg-danger lg-col-2 md-col-4">🐻 Bearish 📉</div>
+                </div>
+                {{/if}}
+                {{#if post.bull_count}}
+                <div>
+                    <div class="danger badge rounded-pill bg-success lg-col-2 md-col-4">🐮 Bullish 📈</div>
+                </div>
+                {{/if}}
+            {{!-- </div> --}}
     </div>
 </div>
 {{/each}}
@@ -66,13 +69,13 @@
 
 {{!-- MAKE A COMMENT GOES HERE --}}
 {{#if logged_in}}
-<div class="row m-3 w-75">
+<div class="row m-3 w-75 justify-content-center" style = "margin: auto auto;">
     <form class="add-comment-form form-group row">
-        <label class="form-label" for="description">
+        <label class="text-light form-label" for="description">
             Add a comment...
         </label>
         <br />
-        <textarea id="text_body" class="form-control"
+        <textarea id="text_body" class="form-control " style = "border: solid #404040 5px; border-radius: 15px;"
             placeholder="Bruh, who puts their life savings in ornamental gourd futures? What is wrong with you??????"
             name="text_body" rows="6" cols="30">
             </textarea>
@@ -89,3 +92,4 @@
 </div>
 <script src="/js/add-comment.js"></script>
 {{/if}}
+</div>

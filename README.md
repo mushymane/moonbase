@@ -42,6 +42,28 @@ SOME COOL FEATURES
 ![Demo of image viewing]()
 
 
+**Browse posts and "hype" them up!**
+* "Hypes" are user-engagement points that are awarded to users for doing social activities like creating posts or comments. Users can then expend their hypes to "hype up" posts that they think are important. Post can be hyped up any number of times. The more that a user is active, the more influence that user can have on the site.
+![Demo of browsing and hyping](./public/images/hype-demo.gif)
+
+**Create new posts and display automatically generated stock values**
+* Users can create posts and indicate if they think the stock is bullish or bearish. When a user submits their post, Moonbase will automatically pull the current stock price, dollar change, and percent change and add it to the post.
+![Demo of creating posts](./public/images/new-post-demo.gif)
+
+**View which stocks are trending in the market**
+* Users can see which stock are trending from *within* the Moonbase website. No need to leave the website to view this information!
+![Demo of viewing trending stocks](./public/images/trending-demo.gif)
+
+**View the market data for a post's stock**
+* Users can view the current market data for post's stock from *within* the Moonbase website too!
+![Demo of viewing single stock data](./public/images/stock-demo.gif)
+
+**Add bullish/bearish flair to a post or comment**
+* Users can add bullish or bearish flairs to posts and comments to share their opinion on the stock sentiment.
+![Demo of bullish/bearish flairs](./public/images/comment-demo.gif)
+
+
+
 ## Prerequisites
 1. [Install Node.js](https://nodejs.org/en/download/)
 2. [Install MySQL](https://www.mysql.com)

@@ -1,4 +1,4 @@
-# moonbase
+# Moonbase
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ---
@@ -29,7 +29,7 @@ With the advent of Robinhood and other retail investment platforms, interest in 
 Moonbase solves this problem by being investors one-stop-shop to talk about and view stock data! Being a dedicated investment forum, we can also add more nuance to how the forum is used and provide tools to keep users engaged.
 
 
-**[Click this link to go to Moonbase](https://guarded-chamber-67294.herokuapp.com/)**
+**[Click this link to go to Moonbase!](https://guarded-chamber-67294.herokuapp.com/)**
  <br />
 
 

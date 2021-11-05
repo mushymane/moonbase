@@ -6,9 +6,10 @@ async function setHourlyTrendingStocks() {
     try {
         trendingStocks = await createTrending();
         // console.log(trendingStocks);
+        return trendingStocks;
     } catch (err) {
         console.error(err);
     }
 }
 
-module.exports = { setHourlyTrendingStocks, trendingStocks };
+module.exports = { setHourlyTrendingStocks };

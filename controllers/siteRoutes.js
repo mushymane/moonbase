@@ -2,6 +2,9 @@ const router = require('express').Router();
 const { User, Post, Comment, Hype, Stock } = require('../models');
 const quotePrice = require('../utils/axios-quote');
 const withAuth = require('../utils/auth');
+// const trending = require('../utils/trend-interval')
+const cheerioTrending = require('../utils/cheerio-trending')
+var stock;
 
 router.get('/', async (req, res) => {
     try {
@@ -114,12 +117,12 @@ router.get('/dashboard/edit/:id', withAuth, async (req, res) => {
 
 // TODO
 router.get('/trending', async (req, res) => {
+    // stock = await cheerioTrending();
+    console.log(stock);
     try {
-        // grab trending stocks
-
         res.render('trending', {
-            // should pass in stuff here?
-            //logged_in: true // ?
+            stock,
+            logged_in: req.session.logged_in
         })
     } catch (err) {
         res.status(500).json(err);
@@ -203,16 +206,18 @@ router.get('/stock/:id', async (req, res) => {
     }
 })
 
-router.get('/login', (req, res) => {
+router.get('/login', async (req, res) => {
     if (req.session.logged_in) {
         res.redirect('/dashboard');
         return;
     }
     res.render('login');
+    stock = await cheerioTrending();
 })
 
-router.get('/signup', (req, res) => {
+router.get('/signup', async (req, res) => {
     res.render('signup');
+    stock = await cheerioTrending();
 })
 
 module.exports = router;

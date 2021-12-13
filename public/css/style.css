@@ -55,3 +55,20 @@ a {
     background: rgb(211, 238, 185) !important;
     transition: .25s;
 }
+
+
+.new-post-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.new-post {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.new-post-btn {
+    width: 100%;
+}

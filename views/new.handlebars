@@ -1,38 +1,40 @@
 {{!-- adding a new post --}}
-<div class="mb-3 w-75">
-    <h3 class="text-light stock-val">Create a post</h3>
-    <form class="new-post-form form-group">
-        <label class="form-label text-light" for="title">
-            Title:
-        </label>
-        <br />
-        <input id="title" class="form-control row" type="text" placeholder="Big Gainz Here 🚀" aria-label="post title"
-            name="title"></input>
-        <br />
-        <label class="form-label text-light" for="ticker">
-            Ticker:
-        </label>
-        <br />
-        <input id="ticker" class="form-control row" type="text" placeholder="MOON!" aria-label="ticker" name="ticker"
-            maxlength="6"></input>
-        <br />
-        <label class="form-label text-light" for="description">
-            Description:
-        </label>
-        <br />
-        <textarea id="description" class="form-control row"
-            placeholder="Dump all my savings into gourd 🎃 futures, earned 5.5 mil, and you can too!"
-            aria-label="ticker" name="ticker" name="description" rows="5" cols="30">
+<div class="new-post-container">
+    <div class="mb-3 w-75 center">
+        <h3 class="text-light stock-val">Create a post</h3>
+        <form class="new-post-form new-post form-group">
+            <label class="form-label text-light" for="title">
+                Title:
+            </label>
+            <br />
+            <input id="title" class="form-control row" type="text" placeholder="Big Gainz Here 🚀"
+                aria-label="post title" name="title"></input>
+            <br />
+            <label class="form-label text-light" for="ticker">
+                Ticker:
+            </label>
+            <br />
+            <input id="ticker" class="form-control row" type="text" placeholder="MOON!" aria-label="ticker"
+                name="ticker" maxlength="6"></input>
+            <br />
+            <label class="form-label text-light" for="description">
+                Description:
+            </label>
+            <br />
+            <textarea id="description" class="form-control row"
+                placeholder="Dump all my savings into gourd 🎃 futures, earned 5.5 mil, and you can too!"
+                aria-label="ticker" name="ticker" name="description" rows="5" cols="30">
         </textarea>
-        <div class="row">
-            <input type="radio" class="btn-check" name="options-outlined" id="bear-btn" autocomplete="off">
-            <label class="btn btn-danger custom-btn" for="bear-btn">🐻 Bearish 📉</label>
-            <input type="radio" class="btn-check" name="options-outlined" id="bull-btn" autocomplete="off">
-            <label class="btn btn-success custom-btn" for="bull-btn">🐮 Bullish 📈</label>
-        </div>
-        <button class="btn btn-secondary custom-btn" type="submit" value="Submit">
-            Submit
-        </button>
-    </form>
+            <div class="row">
+                <input type="radio" class="btn-check" name="options-outlined" id="bear-btn" autocomplete="off">
+                <label class="btn btn-danger custom-btn new-post-btn" for="bear-btn">🐻 Bearish 📉</label>
+                <input type="radio" class="btn-check" name="options-outlined" id="bull-btn" autocomplete="off">
+                <label class="btn btn-success custom-btn new-post-btn" for="bull-btn">🐮 Bullish 📈</label>
+            </div>
+            <button class="btn btn-secondary custom-btn new-post-btn" type="submit" value="Submit">
+                Submit
+            </button>
+        </form>
+    </div>
 </div>
 <script src="/js/new-post.js"></script>

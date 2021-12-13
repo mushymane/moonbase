@@ -79,7 +79,7 @@ const hypeButtonHandler = async (event) => {
     }
 }
 
-let hypeButtons = document.querySelectorAll('#hype-btn')
+let hypeButtons = document.querySelectorAll('#hype-btn') // fix this. Should be a class I believe
 
 hypeButtons.forEach((btn) => {
     btn.addEventListener('click', hypeButtonHandler);

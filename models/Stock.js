@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/connection");
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
 
 class Stock extends Model {
   /**
@@ -21,7 +21,7 @@ Stock.init(
       primaryKey: true,
     },
     name: {
-      type: DataTypes.STRING,  // From axios-search or axios-all-symbol. 'description' on both
+      type: DataTypes.STRING, // From axios-search or axios-all-symbol. 'description' on both
       // allowNull: false,
     },
     price: {
@@ -60,8 +60,8 @@ Stock.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "stock",
-  }
+    modelName: 'stock',
+  },
 );
 
 module.exports = Stock;

@@ -1,6 +1,5 @@
-const { Model, DataTypes } = require("sequelize");
-const bcrypt = require("bcrypt");
-const sequelize = require("../config/connection");
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
 
 class Post extends Model {}
 
@@ -17,7 +16,7 @@ Post.init(
       allowNull: false,
     },
     ticker: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     price: {
       type: DataTypes.DECIMAL,
@@ -33,34 +32,34 @@ Post.init(
     },
     description: {
       type: DataTypes.TEXT,
-      allowNull: false
+      allowNull: false,
     },
     hype_count: {
       type: DataTypes.INTEGER,
     },
     bull_count: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
     },
     bear_count: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
     },
     // stock_id: {
     //   type: DataTypes.STRING,
     //   references: {
-    //     model: "stock",
-    //     key: "ticker",
+    //     model: 'stock',
+    //     key: 'ticker',
     //   },
     // },
     date_created: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: DataTypes.NOW
+      defaultValue: DataTypes.NOW,
     },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: "user",
-        key: "id",
+        model: 'user',
+        key: 'id',
       },
     },
   },
@@ -69,8 +68,8 @@ Post.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "post",
-  }
+    modelName: 'post',
+  },
 );
 
 module.exports = Post;

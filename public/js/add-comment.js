@@ -1,6 +1,6 @@
 async function newFormHandler(event) {
     event.preventDefault();
-    console.log("HIT ADD COMMENT JS");
+    console.log('HIT ADD COMMENT JS');
 
     const post_id = window.location.toString().split('/')[
         window.location.toString().split('/').length - 1
@@ -18,10 +18,9 @@ async function newFormHandler(event) {
     const response = await fetch(`/api/posts/${post_id}/comment`, {
         method: 'POST',
         body: JSON.stringify({
-
             text_body: text_body,
             bear_count: bear,
-            bull_count: bull
+            bull_count: bull,
         }),
         headers: {
             'Content-Type': 'application/json',
@@ -35,7 +34,7 @@ async function newFormHandler(event) {
     }
 
     // Updates commenter's hype count
-    const hypeResponse = await fetch(`/api/hype/commentcredit`, {
+    const hypeResponse = await fetch('/api/hype/commentcredit', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',

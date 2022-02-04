@@ -12,7 +12,7 @@ Comment.init(
       autoIncrement: true,
     },
     text_body: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     post_id: {
         type: DataTypes.INTEGER,
@@ -22,15 +22,15 @@ Comment.init(
         },
     },
     bear_count: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
     },
     bull_count: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
     },
     date_created: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: DataTypes.NOW
+      defaultValue: DataTypes.NOW,
     },
     user_id: {
       type: DataTypes.INTEGER,
@@ -47,7 +47,7 @@ Comment.init(
     freezeTableName: true,
     underscored: true,
     modelName: 'comment',
-  }
+  },
 );
 
 module.exports = Comment;

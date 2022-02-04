@@ -32,7 +32,7 @@ Hype.init(
     freezeTableName: true,
     underscored: true,
     modelName: 'hype',
-  }
+  },
 );
 
 module.exports = Hype;

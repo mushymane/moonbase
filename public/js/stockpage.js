@@ -1,16 +1,15 @@
 var hypeCounts = document.querySelectorAll('#hypecount');
 
 hypeCounts.forEach((post) => {
-    console.log(post)
-    var postId = post.parentNode.parentNode.parentNode.dataset.postId
+    console.log(post);
+    var postId = post.parentNode.parentNode.parentNode.dataset.postId;
     fetch(`api/hype/posts/${postId}/hypecount`)
     .then((response) => response.json()) 
     .then((hype) => {
         post.innerHTML = hype.count;
         // document.getElementById('hypecount').innerHTML = hype.count;
-
     });
-})
+});
 
 const hypeButtonHandler = async (event) => {
     event.preventDefault();
@@ -28,15 +27,15 @@ const hypeButtonHandler = async (event) => {
         // commented out bc forgot user can hype post multiple times
 
         // if (!hyped) {
-        const response = await fetch(`api/hype`, {
+        const response = await fetch('api/hype', {
             method: 'POST',
             body: JSON.stringify({
                 // post_id: req.body.post_id,
-                post_id: postId
+                post_id: postId,
             }),
             headers: {
-                'Content-Type': 'application/json'
-            }
+                'Content-Type': 'application/json',
+            },
         });
 
         // const response = await fetch(`api/hype/posts/`)
@@ -57,8 +56,7 @@ const hypeButtonHandler = async (event) => {
                 .then((hype) => {
                     console.log(event.target.parentNode.parentNode.querySelector('#hypecount'));
                     event.target.parentNode.parentNode.querySelector('#hypecount').innerHTML = hype.count;
-
-                })
+                });
             
             
 
@@ -75,12 +73,12 @@ const hypeButtonHandler = async (event) => {
         }
         // }
     } catch (err) {
-        console.log(err)
+        console.log(err);
     }
-}
+};
 
-let hypeButtons = document.querySelectorAll('#hype-btn') // fix this. Should be a class I believe
+const hypeButtons = document.querySelectorAll('#hype-btn'); // fix this. Should be a class I believe
 
 hypeButtons.forEach((btn) => {
     btn.addEventListener('click', hypeButtonHandler);
-})
+});

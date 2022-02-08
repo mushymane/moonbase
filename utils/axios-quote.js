@@ -1,16 +1,17 @@
-const axios = require("axios");
+const axios = require('axios');
 require('dotenv').config();
+
 const baseUrl = 'https://finnhub.io/api/v1/';
 const apiKey = `&token=${process.env.API_KEY}`;
 
 
 async function stockQuote(ticker) {
     try {
-        let userQuote = ticker;
-            const completeQuoteQuery = `${baseUrl}quote?symbol=${userQuote}${apiKey}`;
-            const response = await axios.get(completeQuoteQuery);
-            // console.log(response.data);
-            return response.data; // response explained below
+        const userQuote = ticker;
+        const completeQuoteQuery = `${baseUrl}quote?symbol=${userQuote}${apiKey}`;
+        const response = await axios.get(completeQuoteQuery);
+        // console.log(response.data);
+        return response.data; // response explained below
     } catch (err) {
         console.error(err);
     }

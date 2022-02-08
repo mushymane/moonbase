@@ -8,14 +8,14 @@ const loginFormHandler = async (event) => {
         const response = await fetch('/api/users/login', {
             method: 'POST',
             body: JSON.stringify({ email, password }),
-            headers: { 'Content-Type': 'application/json' }
+            headers: { 'Content-Type': 'application/json' },
         });
 
         if (response.ok) {
             document.location.replace('/dashboard');
         } else {
-            alert('Failed to log in')
-            console.log(response.statusText)
+            alert('Failed to log in');
+            console.log(response.statusText);
         }
     }
 };

@@ -1,10 +1,9 @@
 const sequelize = require('../config/connection');
-const { User, Post, Comment, Hype, Stock } = require('../models');
+const { User, Post, Comment, Stock } = require('../models');
 
 const userData = require('./userData.json');
 const postData = require('./postData.json');
 const commentData = require('./commentData.json');
-const hypeData = require('./hypeData.json');
 const stockData = require('./stockData.json');
 
 const seedDatabase = async () => {
@@ -16,7 +15,6 @@ const seedDatabase = async () => {
 
   await Comment.bulkCreate(commentData);
 
-  // await Hype.bulkCreate(hypeData);
   await Stock.bulkCreate(stockData);
   process.exit(0);
 };

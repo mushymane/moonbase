@@ -1,17 +1,17 @@
-const router = require("express").Router();
-const { User, Post, Comment, Hype, Stock } = require("../../models");
-const withAuth = require("../../utils/auth");
+const router = require('express').Router();
+const { User, Post, Comment, Hype, Stock } = require('../../models');
+const withAuth = require('../../utils/auth');
 const quotePrice = require('../../utils/axios-quote');
 
 /* gets all posts with path /api/posts */
-router.get("/", async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const postData = await Post.findAll({
             include: [
                 { model: User, attributes: ['id', 'username'] },
                 { model: Comment },
-                { model: Hype }
-            ]
+                { model: Hype },
+            ],
         });
         res.status(200).json(postData);
     } catch (err) {
@@ -20,14 +20,14 @@ router.get("/", async (req, res) => {
 });
 
 // gets post by post id /api/posts/:id
-router.get("/:id", async (req, res) => {
+router.get('/:id', async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id, {
             include: [{ model: User }, { model: Comment }, { model: Hype }],
         });
 
         if (!postData) {
-            res.status(404).json({ message: "no post found with that id" });
+            res.status(404).json({ message: 'no post found with that id' });
             return;
         }
 
@@ -38,7 +38,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // gets posts posted by a particular user /api/posts/user/:id
-router.get("/user/:id", async (req, res) => {
+router.get('/user/:id', async (req, res) => {
     try {
         const postData = await Post.findAll(
             { where: { user_id: req.params.id } },
@@ -53,7 +53,7 @@ router.get("/user/:id", async (req, res) => {
         );
 
         if (!postData) {
-            res.status(404).json({ message: "no post found with that id" });
+            res.status(404).json({ message: 'no post found with that id' });
             return;
         }
 
@@ -64,7 +64,7 @@ router.get("/user/:id", async (req, res) => {
 });
 
 // gets posts posted by a particular user /api/posts/stock/:id
-// router.get("/stock/:id", async (req, res) => {
+// router.get('/stock/:id', async (req, res) => {
 //     try {
 //       const postData = await Post.findAll({
 //         where: {
@@ -74,7 +74,7 @@ router.get("/user/:id", async (req, res) => {
 //       });
 
 //       if (!postData) {
-//         res.status(404).json({ message: "no post found with that id" });
+//         res.status(404).json({ message: 'no post found with that id' });
 //         return;
 //       }
 
@@ -86,8 +86,8 @@ router.get("/user/:id", async (req, res) => {
 
 // **************************************** TODO: UNCOMMENT
 // Adds new post /api/posts
-// router.post("/", withAuth, async (req, res) => {
-router.post("/", async (req, res) => {
+// router.post('/', withAuth, async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         const quote = await quotePrice(req.body.ticker);
         const postData = await Post.create({
@@ -95,7 +95,7 @@ router.post("/", async (req, res) => {
             price: quote.c,
             change: quote.d,
             percent_change: quote.dp,
-            user_id: req.session.user_id
+            user_id: req.session.user_id,
         });
         // console.log(postData);
         res.status(200).json(postData);
@@ -105,21 +105,21 @@ router.post("/", async (req, res) => {
 });
 
 //updates post based on post id /api/posts/:id
-// router.put("/:id", withAuth, async (req, res) => {
-router.put("/:id", async (req, res) => {
+// router.put('/:id', withAuth, async (req, res) => {
+router.put('/:id', async (req, res) => {
     try {
         const postData = await Post.update(
             {
-                ...req.body
+                ...req.body,
             },
             {
                 where: {
                     id: req.params.id,
                 },
-            }
+            },
         );
         if (!postData) {
-            res.status(404).json({ message: "No Post found with this id" });
+            res.status(404).json({ message: 'No Post found with this id' });
             return;
         }
         res.status(200).json({ message: 'user successfUlly updated' });
@@ -130,8 +130,8 @@ router.put("/:id", async (req, res) => {
 });
 
 //deletes post based on post id /api/posts/:id
-// router.delete("/:id", withAuth, async (req, res) => {
-router.delete("/:id", async (req, res) => {
+// router.delete('/:id', withAuth, async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
         const postData = Post.destroy({
             where: {
@@ -139,10 +139,10 @@ router.delete("/:id", async (req, res) => {
             },
         });
         if (!postData) {
-            res.status(404).json({ message: "No Post found with this id" });
+            res.status(404).json({ message: 'No Post found with this id' });
             return;
         }
-        res.status(200).json({ message: "deleted successfully" });
+        res.status(200).json({ message: 'deleted successfully' });
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
@@ -150,7 +150,7 @@ router.delete("/:id", async (req, res) => {
 });
 
 //get all comments based on post id
-router.get("/:id/comments", async (req, res) => {
+router.get('/:id/comments', async (req, res) => {
     try {
         const commentData = await Comment.findAll(
             {
@@ -158,8 +158,8 @@ router.get("/:id/comments", async (req, res) => {
                 include: [
                     { model: Post, attributes: ['title', 'user_id'] },
                     { model: User, attributes: ['username'] },
-                ]
-            }
+                ],
+            },
         );
         res.status(200).json(commentData);
     } catch (err) {
@@ -169,22 +169,22 @@ router.get("/:id/comments", async (req, res) => {
 
 //post a new comment
 router.post('/:id/comment', async (req, res) => {
-// router.post('/:id/comment', withAuth, async (req, res) => {
+    // router.post('/:id/comment', withAuth, async (req, res) => {
     try {
         const newComment = await Comment.create({
             ...req.body,
             user_id: req.session.user_id,
-            post_id: req.params.id
+            post_id: req.params.id,
         });
         res.status(200).json(newComment);
     } catch (err) {
         res.status(400);
     }
-})
+});
 
 // update comment based on post id and user id /api/posts/:id/comment/
 // can test when we have fornt end
-// router.put("/:id/comment/", withAuth, async (req, res) => {
+// router.put('/:id/comment/', withAuth, async (req, res) => {
 //     try {
 //       console.log(req.body);
 //       const updatedComment = await Comment.update(
@@ -203,7 +203,7 @@ router.post('/:id/comment', async (req, res) => {
 //           .status(404)
 //           .json({
 //             message:
-//               "Unable to find comment with that id, or requested comment content is the same as current",
+//               'Unable to find comment with that id, or requested comment content is the same as current',
 //           });
 //         return;
 //       }
@@ -215,7 +215,7 @@ router.post('/:id/comment', async (req, res) => {
 
 // Delete comment based on comment id api/comments/:id
 // can test when we have front end
-// router.delete("/:id", withAuth, async (req, res) => {
+// router.delete('/:id', withAuth, async (req, res) => {
 //     try {
 //       const commentData = await Comment.destroy({
 //         where: {
@@ -224,12 +224,12 @@ router.post('/:id/comment', async (req, res) => {
 //           user_id: req.session.user_id,
 //         },
 //       });
-  
+
 //       if (!commentData) {
-//         res.status(404).json({ message: "no comment found with that id" });
+//         res.status(404).json({ message: 'no comment found with that id' });
 //         return;
 //       }
-  
+
 //       res.status(200).json(commentData);
 //     } catch (err) {
 //       res.status(500).json(err);

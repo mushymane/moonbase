@@ -1,6 +1,6 @@
 async function newFormHandler(event) {
     event.preventDefault();
-    console.log("NEW POST JS HIT");
+    console.log('NEW POST JS HIT');
     const title = document.getElementById('title').value.trim();
     const ticker = document.getElementById('ticker').value.trim().toUpperCase();
     const description = document.getElementById('description').value.trim();
@@ -14,7 +14,7 @@ async function newFormHandler(event) {
     }
 
     // Creates new post
-    const response = await fetch(`/api/posts`, {
+    const response = await fetch('/api/posts', {
         method: 'POST',
         body: JSON.stringify({
             title: title,
@@ -22,7 +22,7 @@ async function newFormHandler(event) {
             description: description,
             hype_count: 1,
             bear_count: bear,
-            bull_count: bull
+            bull_count: bull,
         }),
         headers: {
             'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ async function newFormHandler(event) {
     }
 
     // Updates Poster's hype count
-    const hypeResponse = await fetch(`/api/hype/postcredit`, {
+    const hypeResponse = await fetch('/api/hype/postcredit', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
